@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+     <style>
+    .card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 40%;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+    </style>
+</head>
+    
+    <body>
+        
+         <div class="jumbotron text-center">
+    <h2>Trainer's</h2>      
+      </div>
+       
+            
+         <div class="container-fluid well" style="border: solid">
+          <div class="row" *ngFor="let mentor of mentor">
+              <div class="col-lg-2">
+                 <div class="card" style="width: 100%">
+  <img src="assets/img/trainer.png" alt="Avatar" style="width:100%">
+  <div class="container-fluid">
+    <h4><b>{{mentor.firstName}} {{mentor.lastName}}</b></h4> 
+    <p> {{mentor.mentorProfile}}</p>
+      
+  </div>
+</div>
+              </div>
+              <div class="col-lg-10 text-left">
+      
+                   <table class="table table-hover table-bordered">
+
+              <tr>
+                <th>Username</th>
+                <td>{{mentor.userName}}</td>
+               </tr>
+
+               <tr>
+                <th>First Name</th>
+                <td>{{mentor.firstName}}</td>
+               </tr>
+
+               <tr>
+                <th>Last Name</th>
+                <td>{{mentor.lastName}}</td>
+               </tr>
+
+               <tr>
+                <th>Email Id</th>
+                <td>{{mentor.emailId}}</td>
+               </tr>
+
+               <tr>
+                <th>Contact Number</th>
+                <td>{{mentor.contactNumber}}</td>
+               </tr>
+
+               <tr>
+                <th>Linkedin Url</th>
+                <td>{{mentor.linkedinUrl}}</td>
+               </tr>
+
+               <tr>
+                <th>Experience</th>
+                <td>{{mentor.yearsOf_experience}} Years</td>
+               </tr>
+             
+            
+</table>
+                  
+              </div>
+            </div>
+            
+        </div>
+    
+
+       
+    </body>
+
+
+</html>

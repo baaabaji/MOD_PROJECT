@@ -1,0 +1,137 @@
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+   <style>
+    .card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 40%;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+    </style>
+    
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+      </button>
+      <a routerLink="/mmenu" class="navbar-brand">Mentor Dashboard</a>
+    </div>
+    
+      <div class="collapse navbar-collapse" id="myNavbar">
+        
+      
+    
+     <ul class="nav navbar-nav navbar-right">
+      <li><a onclick='alert("no notifications")'><span class="glyphicon glyphicon-bell"></span> Notification</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Hi {{user}} </a>
+        </li>
+    </ul>
+      
+  </div>
+  
+  </div></nav>
+    <body>
+        
+         <div class="jumbotron text-center">
+    <h2>Mentor's Menu</h2>      
+      </div>
+        <div class="container-fluid well">
+    <div class="row">
+        <div class="dropdown col-sm-6 ">
+        
+    
+  </div>
+            <div class="col-sm-6">
+            
+           <div class="col-sm-6">
+            <button type="button" class="btn btn-primary btn-block"  onclick='alert("no notifications")' >Notification</button></div>
+            <div class="col-sm-6 text-right">
+            <button type="button" class="btn btn-danger" (click)="logout()">Logout</button></div>
+        </div>
+        <br><br>
+        </div>
+            <div class="row">
+            <div class="col-sm-3 text-center">
+                <a routerLink="/tsearch"><button class="btn btn-primary btn-block">Search Trainings</button></a>
+                </div>
+                <div class="col-sm-3 text-center">
+                <a routerLink="/mprogress"><button type="button" class="btn btn-primary btn-block">Current Trainings</button></a>
+                </div>
+                <div class="col-sm-3 text-center">
+                <a routerLink="/medit"><button class="btn btn-primary btn-block">Edit Skills</button></a>
+                </div>
+                <div class="col-sm-3 text-center">
+                <a routerLink="/mpayment"><button type="button" class="btn btn-primary btn-block">Manage Payments</button></a>
+                </div>
+            
+            </div>
+                
+    </div>
+              <div class="container-fluid well" style="border: solid">
+          <div class="row">
+              <div class="col-lg-2">
+                 <div class="card" style="width: 100%">
+  <img src="assets/img/course.jpg" alt="Avatar" style="width:100%">
+  <div class="container-fluid">
+    <h4><b>{{mentor.firstName}} {{mentor.lastName}}</b></h4> 
+    <p> {{mentor.mentorProfile}}</p>
+      
+  </div>
+</div>
+              </div>
+              <div class="col-lg-10 text-left">
+      
+                   <table class="table table-hover table-bordered">
+
+              <tr>
+                <th>Username</th>
+                <td>{{mentor.userName}}</td>
+               </tr>
+
+               <tr>
+                <th>First Name</th>
+                <td>{{mentor.firstName}}</td>
+               </tr>
+
+               <tr>
+                <th>Last Name</th>
+                <td>{{mentor.lastName}}</td>
+               </tr>
+
+               <tr>
+                <th>Email Id</th>
+                <td>{{mentor.emailId}}</td>
+               </tr>
+
+               <tr>
+                <th>Contact Number</th>
+                <td>{{mentor.contactNumber}}</td>
+               </tr>
+
+               <tr>
+                <th>Linkedin Url</th>
+                <td>{{mentor.linkedinUrl}}</td>
+               </tr>
+
+               <tr>
+                <th>Experience</th>
+                <td>{{mentor.yearsOf_experience}} Years</td>
+               </tr>
+             
+            
+</table>
+                  
+              </div>
+            </div>
+        </div>
+    

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+     <style>
+    .card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 40%;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+    </style>
+    
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+      </button>
+      <a routerLink="/mmenu" class="navbar-brand">Mentor Dashboard</a>
+    </div>
+    
+      <div class="collapse navbar-collapse" id="myNavbar">
+        
+      
+    
+     <ul class="nav navbar-nav navbar-right">
+      <li><a onclick='alert("no notifications")'><span class="glyphicon glyphicon-bell"></span> Notification</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Hi {{mentor.firstName}} </a>
+     
+  </li>
+    </ul>
+      
+
+ 
+  </div>
+  
+  </div></nav>
+
+    <body>
+        
+         <div class="jumbotron text-center">
+    <h2>Trainer Profile</h2>      
+      </div>
+       
+            
+        <div class="container-fluid well" style="border: solid">
+          <div class="row">
+              <div class="col-lg-2">
+                 <div class="card" style="width: 100%">
+  <img src="assets/img/course.jpg" alt="Avatar" style="width:100%">
+  <div class="container-fluid">
+    <h4><b>{{mentor.firstName}} {{mentor.lastName}}</b></h4> 
+    <p>{{mentor.mentorProfile}}</p> 
+  </div>
+</div>
+              </div>
+              <div class="col-lg-10 text-left">
+             <table class="table table-hover table-bordered">
+
+              <tr>
+                <th>Username</th>
+                <td>{{mentor.userName}}</td>
+               </tr>
+
+               <tr>
+                <th>First Name</th>
+                <td>{{mentor.firstName}}</td>
+               </tr>
+
+               <tr>
+                <th>Last Name</th>
+                <td>{{mentor.lastName}}</td>
+               </tr>
+
+               <tr>
+                <th>Email Id</th>
+                <td>{{mentor.emailId}}</td>
+               </tr>
+
+               <tr>
+                <th>Contact Number</th>
+                <td>{{mentor.contactNumber}}</td>
+               </tr>
+
+               <tr>
+                <th>Linkedin Url</th>
+                <td>{{mentor.linkedinUrl}}</td>
+               </tr>
+
+               <tr>
+                <th>Experience</th>
+                <td>{{mentor.yearsOf_experience}} Years</td>
+               </tr>
+             
+            
+</table>
+                  
+              
+              
+              
+              </div>
+                      
+              
+              
+              
+            </div>
+        </div>
+        <div class="container-fluid well" style="border: solid">
+                  <h3>Skills</h3>
+                  <table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Id</th>
+    <th>Skill Name</th>
+    <th >Prerequisites</th>
+    <th colspan="1">TOC</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let skill of skills">
+    <td >{{skill.id}}</td>
+    <td>{{skill.name}}</td>
+    <td>{{skill.prerequisites}}</td>
+    <td>{{skill.toc}}</td>
+      
+    <td><button class="btn btn-success" (click)="toggleId()" >  {{ showId ? 'Cancel' : 'Add'}}</button>&nbsp; &nbsp;&nbsp;&nbsp;
+      <button class="btn btn-danger" (click)="deleteSkill(skill)" ><span class="glyphicon glyphicon-remove"></span>Remove</button></td>
+  </tr>
+  </tbody>
+</table>
+            
+            
+            
+            
+            
+            
+            
+            <div *ngIf="showId">
+            
+            
+            <h2 class="text-center">Add Skill</h2>
+<form>
+  <div class="form-group">
+    <label for="techName">Skill Name:</label>
+    <input [(ngModel)]="newSkill.name" placeholder="Tech Name" name="techName" class="form-control" id="techName">
+  </div>
+
+  <div class="form-group">
+    <label for="prerequisites">Prerequisites:</label>
+    <input [(ngModel)]="newSkill.prerequisites" placeholder="Prerequisites" name="prerequisites" class="form-control" id="prerequisites">
+  </div>
+    <div class="form-group">
+    <label for="toc">TOC:</label>
+    <input [(ngModel)]="newSkill.toc" placeholder="TOC" name="toc" class="form-control" id="toc">
+  </div>
+    
+    
+    
+
+  <button class="btn btn-success" (click)="createSkill()">Add</button>&nbsp; &nbsp;&nbsp;
+    <button class="btn btn-danger" (click)="toggleId()" >  Cancel</button>
+</form>
+  
+            
+            
+            </div>
+            
+            
+            
+        </div>
+    </body>
+
+
+
+

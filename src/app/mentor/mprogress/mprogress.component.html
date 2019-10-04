@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+      </button>
+      <a routerLink="/mmenu" class="navbar-brand">Mentor Dashboard</a>
+    </div>
+    
+      <div class="collapse navbar-collapse" id="myNavbar">
+        
+      
+    
+     <ul class="nav navbar-nav navbar-right">
+      <li><a onclick='alert("no notifications")'><span class="glyphicon glyphicon-bell"></span> Notification</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Hi {{mentor}} </a>
+     
+  </li>
+    </ul>
+  </div>
+  
+  </div></nav>
+
+    
+    <body>
+        
+         <div class="jumbotron text-center">
+    <h2>Training Progress</h2>      
+      </div>
+        <div class="container-fluid well">
+    <div class="row">
+        <div class="dropdown col-sm-6 ">
+             
+      </div>
+            <div class="col-sm-6">
+            
+           <div class="col-sm-6">
+            <button type="button" class="btn btn-primary btn-block">Notification</button></div>
+            <div class="col-sm-6 text-right">
+            <button type="button" class="btn btn-danger" (click)="logout()">Logout</button></div>
+        </div>
+        <br><br>
+        </div>
+            <div class="col-sm-3 text-center">
+               <a routerLink="/tsearch"> <button type="button" class="btn btn-primary btn-block">Search Trainings</button></a>
+                </div>
+                <div class="col-sm-3 text-center">
+               <a routerLink="/mprogress"> <button type="button" class="btn btn-primary btn-block">Current Trainings</button></a>
+                </div>
+                <div class="col-sm-3 text-center">
+               <a routerLink="/medit"> <button type="button" class="btn btn-primary btn-block">Edit Skills</button></a>
+                </div>
+                <div class="col-sm-3 text-center">
+                <a routerLink="/mpayment"><button type="button" class="btn btn-primary btn-block">Manage Payments</button></a>
+                </div>
+            
+            </div>
+            <br>
+            <div class="container-fluid well" style="border: solid">
+            <div class="row" >
+               <table class="table table-striped">
+  <thead>
+  <tr>
+    <th class="hidden">Id</th>
+    <th>Start Date</th>
+    <th>Fees</th>
+    <th>UserId</th>
+    <th>Progress</th>
+    <th>Rating</th>
+  </tr>
+  </thead>
+          
+  <tbody>
+  <tr *ngFor="let train of training">
+      <!-- {{tech}} -->
+    <td class="hidden">{{train.id}}</td>
+    
+      <td>{{train.startDate}}</td>
+      <td>{{train.fees}}</td>
+      <td>{{train.userId}}</td>
+       
+      <td><circle-progress
+  [percent]="train.progress"
+  [radius]="20"
+  [outerStrokeWidth]="4"
+  [innerStrokeWidth]="1.5"
+  [outerStrokeColor]="'#78C000'"
+  [innerStrokeColor]="'#C7E596'"
+  [animation]="true"
+  [animationDuration]="300"                                        
+></circle-progress>
+                 </td>
+    <td> <ngb-rating [(rate)]="train.rating">
+  <ng-template let-fill="fill" let-index="index">
+    <span class="star" [class.filled]="fill === 100" [class.bad]="index < 3">&#9733;</span>
+  </ng-template>
+</ngb-rating>
+</td>
+  </tr>
+  </tbody>
+</table>
+                
+                
+               
+                </div>
+           
+        </div>
+    </body>
+
+

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+
+
+    
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>                        
+        </button>
+        <a routerLink="/home" class="navbar-brand">Home</a>
+      </div>
+      
+        <div class="collapse navbar-collapse" id="myNavbar">
+          
+
+      
+       <ul class="nav navbar-nav navbar-right">
+        <li><a onclick='alert("no notifications")'><span class="glyphicon glyphicon-bell"></span> Notification</a></li>
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Hi {{user}}</a>
+        
+    </li>
+      </ul>
+        
+  
+      
+      <form class="navbar-form navbar-right" action="/action_page.php">
+        
+  
+      </form>
+    </div>
+    
+    </div></nav>
+    
+         <div class="jumbotron text-center">
+    <h2>Home</h2>      
+      </div>
+        <div class="container-fluid well">
+    <div class="row">
+        <div class="dropdown col-sm-6 ">
+            <a routerLink="/mprofile"> <button type="button" class="btn btn-primary btn-block">Search Mentors</button> </a>        
+        </div>
+            <div class="col-sm-6">
+            
+           <div class="col-sm-6">
+            <button type="button" class="btn btn-primary btn-block" onclick='alert("no notifications")'>Notification</button></div>
+            <div class="col-sm-6 text-right">
+            <button type="button" class="btn btn-danger" (click)="logout()">Logout</button></div> 
+        </div>
+        <br><br>
+        </div>
+            <div class="row">
+            <div class="col-sm-3 text-center">
+                <a routerLink="/tsearch"><button type="button" class="btn btn-primary btn-block">Search Trainings</button></a>
+                </div>
+                <div class="col-sm-3 text-center">
+               <a routerLink="/uprogress"> <button type="button" class="btn btn-primary btn-block">Current Trainings</button></a>
+                </div>
+                <div class="col-sm-3 text-center">
+                <a routerLink="/ctraining"><button type="button" class="btn btn-primary btn-block">Completed Trainings</button></a>
+                </div>
+                <div class="col-sm-3 text-center">
+               <a routerLink="/upayment"> <button type="button" class="btn btn-primary btn-block">Check Payment</button></a>
+                </div>
+            
+            </div>
+    </div>
+    <div class="container-fluid well" style="border: solid">
+          <div class="row">
+              <div class="col-lg-2">
+                 <div class="card" style="width: 100%">
+  <img src="assets/img/user.png" alt="Avatar" style="width:100%">
+  <div class="container-fluid">
+    <h4><b>{{users.firstName}} {{users.lastName}}</b></h4> 
+    
+      
+  </div>
+</div>
+              </div>
+              <div class="col-lg-10 text-left">
+      
+                   <table class="table table-hover table-bordered">
+
+              <tr>
+                <th>Username</th>
+                <td>{{usign.userName}}</td>
+               </tr>
+
+               <tr>
+                <th>First Name</th>
+                <td>{{usign.firstName}}</td>
+               </tr>
+
+               <tr>
+                <th>Last Name</th>
+                <td>{{usign.lastName}}</td>
+               </tr>
+
+               <tr>
+                <th>Email Id</th>
+                <td>{{usign.Email}}</td>
+               </tr>
+
+               <tr>
+                <th>Contact Number</th>
+                <td>{{usign.Phone}}</td>
+               </tr>
+
+               <tr>
+                <th>Linkedin Url</th>
+                <td>{{usign.LinkedinURL}}</td>
+               </tr>
+
+               
+             
+            
+</table>
+                  
+              </div>
+            </div>
+        </div>
+    
+
+  
+
+

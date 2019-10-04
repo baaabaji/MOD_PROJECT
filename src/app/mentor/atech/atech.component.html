@@ -1,0 +1,119 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+      </button>
+      <a routerLink="/amenu" class="navbar-brand">Admin Dashboard</a>
+    </div>
+    
+      <div class="collapse navbar-collapse" id="myNavbar">
+        
+      
+    
+     <ul class="nav navbar-nav navbar-right">
+      <li><a  onclick="alert('no notifications')"><span class="glyphicon glyphicon-bell"></span> Notification</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Hi Devansh</a>
+      <ul class="dropdown-menu">
+      <li><span class="glyphicon glyphicon-off"></span> Logout</li>
+    </ul>
+  </li>
+    </ul>
+      
+
+    
+    <form class="navbar-form navbar-right" action="/action_page.php">
+      
+      
+
+    </form>
+  </div>
+  
+  </div></nav>
+    
+    <body>
+        
+         <div class="jumbotron text-center">
+    <h2>Admin</h2>      
+      </div>
+        <div class="container-fluid well">
+    <div class="row">
+        <div class="dropdown col-sm-6 ">
+             <a routerLink="/tsearch" > <button type="button" class="btn btn-primary btn-block">Trainings </button></a>
+      </div>
+            <div class="col-sm-6">
+             <div class="col-sm-4">
+                 <a routerLink="/afee" >   <button type="button" class="btn btn-primary btn-block">Manage Fees</button></a></div>
+           <div class="col-sm-4">
+               <a routerLink="/atech" >  <button type="button" class="btn btn-primary btn-block">Add/Edit Technology</button></a></div>
+            <div class="col-sm-4 text-right">
+            <button type="button" class="btn btn-danger" (click)="logout()">Logout</button></div>
+        </div>
+        <br><br>
+        </div>
+            <div class="row">
+            <div class="col-sm-6 text-center">
+                <a routerLink="/aman" >  <button type="button" class="btn btn-primary btn-block">Manage Users</button></a>
+                </div>
+                <div class="col-sm-6 text-center">
+                    <a routerLink="/aman" >  <button type="button" class="btn btn-primary btn-block">Manage Mentors</button></a>
+                </div>
+            
+            </div>
+    </div>
+              <div class="container-fluid well" style="border: solid">
+                  <h3>Current Courses</h3>
+                        <table class="table table-striped">
+  <thead>
+  <tr>
+    <th class="hidden">Id</th>
+    <th>TechName</th>
+    <th>Description</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+          
+  <tbody>
+  <tr *ngFor="let tech of trainings">
+      <!-- {{tech}} -->
+    <td class="hidden">{{tech.id}}</td>
+    
+      <td>{{tech.techName}}</td>
+      <td>{{tech.description}}</td>
+    <td><button class="btn btn-danger" (click)="deleteTech(tech)"> Remove </button></td>
+  </tr>
+  </tbody>
+</table>
+      
+            
+                    
+
+                
+            </div>
+        <div class="col-md-6">
+  <h2 class="text-center">Add Tech</h2>
+<form>
+  <div class="form-group">
+    <label for="techName">Technology Name:</label>
+    <input [(ngModel)]="newT.techName" placeholder="Tech Name" name="techName" class="form-control" id="techName">
+  </div>
+
+  <div class="form-group">
+    <label for="description">Description:</label>
+    <input [(ngModel)]="newT.description" placeholder="Description" name="description" class="form-control" id="description">
+  </div>
+    
+
+  <button class="btn btn-success" (click)="createTech()">Add</button>
+</form>
+        </div>
+           
+        
+    
+    </body>

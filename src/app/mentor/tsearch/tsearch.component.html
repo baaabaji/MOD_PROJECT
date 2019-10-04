@@ -1,0 +1,96 @@
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    
+    
+    
+    <style>
+    .card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 40%;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+    </style>
+    
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>                        
+        </button>
+      </div>
+      
+        <div class="collapse navbar-collapse" id="myNavbar">
+          
+
+      
+       <ul class="nav navbar-nav navbar-right">
+        <li><a onclick='alert("no notifications")'><span class="glyphicon glyphicon-bell"></span> Notification</a></li>
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Hi {{user}}</a>
+        <ul class="dropdown-menu">
+        <li><span class="glyphicon glyphicon-off"></span> Logout</li>
+      </ul>
+    </li>
+      </ul>
+        
+  
+      
+    </div>
+    
+    </div></nav>
+
+    
+        
+         <div class="jumbotron text-center">
+    <h2>Training Menu</h2>      
+      </div>
+        <div class="container-fluid well">
+    <div class="row">
+        <div class="dropdown col-sm-6 ">
+            
+      </div>
+            <div class="col-sm-6">
+            
+           <div class="col-sm-6">
+            </div>
+            <div class="col-sm-6 text-right">
+            <button type="button" class="btn btn-danger" (click)="logout()" >Logout</button></div>
+        </div>
+        <br><br>
+        </div>
+            
+            <br>
+             <div class="container-fluid well" style="border: solid">
+          <div class="row">
+                 
+                     <div class="col-sm-4" *ngFor="let tech of trainings" >
+                 <div class="card" >
+  <img src="assets/img/course.jpg" alt="Avatar" style="width:100%">
+  <div class="container" >
+    <h4><b>{{tech.techName}}</b></h4> 
+    <p>{{tech.description}}</p>
+       <div *ngIf="showId">
+           <button type="button" class="btn btn-success" (click)="enroll(tech.id)" >Enroll</button></div>
+  </div>
+</div>
+              </div>
+                 
+                 </div>
+                
+                 
+
+              
+        </div>
+        </div>
+   
+
+
