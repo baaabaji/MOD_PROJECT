@@ -32,10 +32,10 @@ export class LoginComponent implements OnInit {
     if (this.Login.invalid) 
     {
       return;
-      console.log("Here");
+      // console.log("Here");
     }
 
-    console.log( JSON.stringify(this.Login.value));
+    // console.log( JSON.stringify(this.Login.value));
     this.mylog.login(this.Login.value.Email, this.Login.value.Password).subscribe((data) => {
       if(this.Data!=undefined)
   {

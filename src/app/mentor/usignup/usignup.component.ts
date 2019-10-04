@@ -62,17 +62,19 @@ export class UsignupComponent implements OnInit {
           role:3
         };
         this.UserRegister.reset();
-        console.log(usignup);
+        // console.log(usignup);
       
         this.mylog.Register(JSON.stringify(usignup)).subscribe((data)=>{this.Data=data
-          console.log(this.Data)
+          // console.log(this.Data);
           alert("Registered Successfully");
           this.router.navigate(['login']);
         });
     }
     else
     {
-      console.log('Valid?', this.UserRegister.valid);
+      alert("Something Went Wrong!");
+      this.router.navigate(['usignup']);
+      // console.log('Valid?', this.UserRegister.valid);
     }
   
   }

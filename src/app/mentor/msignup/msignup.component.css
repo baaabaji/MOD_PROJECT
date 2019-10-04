@@ -200,3 +200,7 @@ input {
 	width: 40px;
 }
 
+.h1, .h2, .h3, h1, h2, h3 {
+    margin-top: -90px;
+    margin-bottom: 10px;
+}

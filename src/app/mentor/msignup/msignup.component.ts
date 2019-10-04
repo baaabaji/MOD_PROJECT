@@ -67,17 +67,19 @@ onSubmit(){
         role:2
       };
       this.MentorRegister.reset();
-      console.log(msignup);
+      // console.log(msignup);
     
       this.mylog.Register(JSON.stringify(msignup)).subscribe((data)=>{this.Data=data
-        console.log(this.Data)
+        // console.log(this.Data);
         alert("Registered Successfully");
         this.router.navigate(['login']);
       });
   }
   else
   {
-    console.log('Valid?', this.MentorRegister.valid);
+    alert("Something's Wrong!");
+    this.router.navigate(['msignup']);
+    // console.log('Valid?', this.MentorRegister.valid);
   }
 
 }
