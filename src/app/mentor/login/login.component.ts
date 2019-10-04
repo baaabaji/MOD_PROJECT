@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   UserDetails;
   Data:Object;
 
-
+ 
   ngOnInit() {
     this.Login = this.fb.group({
 
@@ -29,18 +29,16 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    if (this.Login.invalid) {
+    if (this.Login.invalid) 
+    {
       return;
       console.log("Here");
     }
 
     console.log( JSON.stringify(this.Login.value));
     this.mylog.login(this.Login.value.Email, this.Login.value.Password).subscribe((data) => {
-    
-
-
-        console.log("--------",data.role);
-        console.log(data.active);
+      if(this.Data!=undefined)
+  {
         if(data.active == true)
         {
           //admin 
@@ -48,16 +46,23 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['amenu']);
         }
         //mentor
-        else if (data.role == 2 ) {
+        else if (data.role == 2 ) 
+        {
           this.router.navigate(['mmenu']);
         }
         //user
-        else if (data.role == 3) {
+        else if (data.role == 3) 
+        {
 
           this.router.navigate(['umenu']);
         }
-      }else {
+      else {
         alert("Account Blocked");
+      }
+    }}
+      else{
+        alert("Invalid Credentials");
+        this.Login.reset();
       }
     
   
@@ -65,4 +70,3 @@ export class LoginComponent implements OnInit {
 
   }
 }
-

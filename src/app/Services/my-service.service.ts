@@ -58,5 +58,12 @@ export class MyService {
     return this._UserData.post("https://localhost:44386/api/register",signUpData,httpOptions).
     pipe(map(data1=>(data1=JSON.parse(JSON.stringify(data1)))));
   }
+  public getUser(getUserData)
+  {
+    console.log(getUserData);
+    return this._UserData.post("https://localhost:44386/api/register",getUserData,httpOptions).
+    pipe(map(data1=>(data1=JSON.parse(JSON.stringify(data1)))));
+
+  }
 
 }

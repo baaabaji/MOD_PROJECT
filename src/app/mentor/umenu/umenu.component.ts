@@ -3,7 +3,9 @@ import { Router } from '@angular/router';
 
 import {UmenuService} from './umenu.service';
 import {User} from './umenu.model'
-
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MyService } from '../../Services/my-service.service';
+import { JsonpInterceptor } from '@angular/common/http';
 
 
 @Component({
@@ -15,17 +17,18 @@ import {User} from './umenu.model'
 export class UmenuComponent implements OnInit {
 
 	users: User=new User();
-	user=sessionStorage.getItem('username')
+	user=sessionStorage.getItem('Email')
 
-	constructor(private router: Router, private umenuService: UmenuService)
+	constructor(private fb: FormBuilder, private mylog: MyService, private router: Router)
 	{
-
+		User;
+		Data:Object;
 	}
 
 ngOnInit(){
-		this.umenuService.getUser()
+		this.mylog.GetAll()
 		.subscribe(data=>{
-			this.users=data;
+			// this.users=data;
 		});
 
 	}

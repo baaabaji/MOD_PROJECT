@@ -61,16 +61,7 @@
             Linkedin Url </small>
         </div>
         <div class="form-group">
-          <input formControlName="Password" placeholder="Password" name="Password" class="form-control" id="Password">
-          <small class="text-danger"
-            *ngIf="UserRegister.get('Password').touched && UserRegister.get('Password').errors?.required">This field is
-            mandatory</small>
-          <small class="text-danger"
-            *ngIf="UserRegister.get('Password').touched && UserRegister.get('Passwords.Password').errors?.minlength">Minimun
-            8 characters required</small>
-        </div>
-        <div class="form-group">
-          <input formControlName="userName" placeholder="userName" name="userName" class="form-control" id="userName">
+          <input formControlName="userName" placeholder="Username" name="userName" class="form-control" id="userName">
           <small class="text-danger"
             *ngIf="UserRegister.get('userName').touched && UserRegister.get('userName').errors?.required">This field is
             mandatory</small>
@@ -78,6 +69,15 @@
             *ngIf="UserRegister.get('userName').touched && UserRegister.get('userName').errors?.minlength">Minimun 6
             characters required</small>
         </div>
+        <div class="form-group">
+          <input type="password" formControlName="Password" placeholder="Password" name="Password" class="form-control" id="Password">
+          <small class="text-danger" *ngIf="UserRegister.get('Password').touched && UserRegister.get('Password').errors?.required">This field is
+            mandatory</small>
+          <small class="text-danger"
+            *ngIf="UserRegister.get('Password').touched && UserRegister.get('Passwords.Password').errors?.minlength">Minimun
+            8 characters required</small>
+        </div>
+        
 
         <input class="hidden" value="active">
         <button class="btn btn-primary" [disabled]="!UserRegister.valid">Register</button>

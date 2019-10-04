@@ -3,6 +3,7 @@ import {Router} from  '@angular/router';
 import { FormBuilder,  Validators,FormGroup,ReactiveFormsModule  } from '@angular/forms';
 import {Mentor} from './msignup.model';
 import {MsignupService} from './msignup.service';
+import { MyService } from 'src/app/Services/my-service.service';
 
 @Component({
 	selector: 'msignup',
@@ -11,10 +12,12 @@ import {MsignupService} from './msignup.service';
 
 
 })
-export class MsignupComponent {constructor(private fb:FormBuilder) { }
-
-MentorRegister: FormGroup;
-submitted = false;
+export class MsignupComponent {
+  constructor(private fb: FormBuilder, private mylog:MyService, private router: Router) { }
+  MentorRegister: FormGroup;
+  submitted=false;
+  Data;
+  SkillData;
 
 
 
@@ -26,9 +29,9 @@ ngOnInit() {
 	firstName:['',[Validators.required,Validators.pattern('[a-zA-Z ]*')]],
 	lastName:['',[Validators.required,Validators.pattern('[a-zA-Z ]*')]],
 	Phone:['',[Validators.required,Validators.pattern('^([6-9]{1})([0-9]{9})$')]],
-	LinkedinURL:['',Validators.required],
+  LinkedinURL:['',Validators.required],
+  userName:['',[Validators.required,Validators.minLength(6)]],
 	  Password:['',[Validators.required,Validators.minLength(8)]],
-	  userName:['',[Validators.required,Validators.minLength(6)]],
 	  YOE:['',[Validators.required,Validators.pattern('[0-9]*')]],
 	  profile:['',[Validators.required]]
 	  
@@ -46,21 +49,37 @@ ngOnInit() {
 
 
 onSubmit(){
-  this.submitted = true;
-  if (this.MentorRegister.invalid) {
-	  return;
+  if(this.MentorRegister.valid)
+  {
+    
+    const msignup={
+        Email:this.MentorRegister.value.Email,
+        firstName:this.MentorRegister.value.firstName,
+        lastName:this.MentorRegister.value.lastName,
+
+        Phone:this.MentorRegister.value.Phone,
+        LinkedinURL:this.MentorRegister.value.LinkedinURL,
+        userName:this.MentorRegister.value.userName,
+        Password:this.MentorRegister.value.Password,
+        YOE:this.MentorRegister.value.YOE,
+        profile:this.MentorRegister.value.profile,
+        active:true,
+        role:2
+      };
+      this.MentorRegister.reset();
+      console.log(msignup);
+    
+      this.mylog.Register(JSON.stringify(msignup)).subscribe((data)=>{this.Data=data
+        console.log(this.Data)
+        alert("Registered Successfully");
+        this.router.navigate(['login']);
+      });
   }
-  
-  alert('SUCCESS!!'+JSON.stringify(this.MentorRegister.value));
+  else
+  {
+    console.log('Valid?', this.MentorRegister.valid);
+  }
+
 }
 
-
-//   onSubmit2(){
-//     this.submitted = true;
-//     if (this.MentorRegister.invalid) {
-//         return;
-//     }
-  
-//     alert('SUCCESS!!'+JSON.stringify(this.MentorRegister.value));
-//   }
 }
