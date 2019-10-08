@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import * as _ from "underscore";
 
 
 import {MmenuService} from './mmenu.service';
 import {Mentor} from './mmenu.model'
+import { MyService } from 'src/app/Services/my-service.service';
 
 
 
@@ -15,18 +17,15 @@ import {Mentor} from './mmenu.model'
 })
 export class MmenuComponent implements OnInit {
 
-	mentor: Mentor=new Mentor();
-	user=sessionStorage.getItem('username')
+	myTrainings;
+  Data;
+  Progress;
+  msg;
+  getId;
+  CurrentUser;
 
-	constructor(private router: Router, private mmenuService: MmenuService)
+	constructor(private router: Router, private mylog: MyService)
 	{
-
-	}
-	ngOnInit(){
-		this.mmenuService.getMentor()
-		.subscribe(data=>{
-			this.mentor=data;
-		});
 
 	}
 
@@ -37,6 +36,48 @@ export class MmenuComponent implements OnInit {
 		sessionStorage.removeItem('username')
 		this.router.navigate(['home']);
 	}
+	ngOnInit() {
+		let i= localStorage.getItem("Id");
+		this.CurrentUser= +i;
+		this.getTrainings();
+	  }
 	
 	
-}
+	  getTrainings()
+	  {
+		this.mylog.trainingApprovals().subscribe(data=>{
+		  this.myTrainings=_.where(data,{accept:true,mentorId:this.CurrentUser,PaymentStatus:true});
+		  console.log(this.myTrainings);
+		 console.log(Object.keys(this.myTrainings).length);
+		 if(Object.keys(this.myTrainings).length>0)
+		 {
+		   this.Data=false;
+		 }
+		 else
+		 {
+		   this.Data=true;
+		 }
+		});
+	  }
+	
+	  Update(id)
+	  { 
+		this.getId=id;
+	  }
+	
+	  Mainupdate()
+	  {
+		let data={
+		  id:this.getId,
+		  progress:this.Progress
+		};
+	
+	  this.mylog.trainingProgress(data).subscribe(data=>{
+		this.msg=data;
+		alert(this.msg);
+		this.Progress='';
+		this.getTrainings();
+	  });
+	  }
+	}
+	

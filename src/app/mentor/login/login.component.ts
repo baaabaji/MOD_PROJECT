@@ -37,8 +37,8 @@ export class LoginComponent implements OnInit {
 
     // console.log( JSON.stringify(this.Login.value));
     this.mylog.login(this.Login.value.Email, this.Login.value.Password).subscribe((data) => {
-      if(this.Data!=undefined)
-  {
+  //     if(this.Data!=undefined)
+  // {
         if(data.active == true)
         {
           //admin 
@@ -58,12 +58,12 @@ export class LoginComponent implements OnInit {
         }
       else {
         alert("Account Blocked");
-      }
-    }}
-      else{
-        alert("Invalid Credentials");
-        this.Login.reset();
-      }
+      }}
+    // }}
+      // else{
+      //   alert("Invalid Credentials");
+      //   this.Login.reset();
+      // }
     
   
   });

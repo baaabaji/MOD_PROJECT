@@ -27,6 +27,7 @@
         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Hi {{user}}</a>
         
     </li>
+    <li class="dropdown"><a onclick='logout()' class="dropdown-toggle" data-toggle="dropdown" ><button type="button" class="dropdown-toggle" id="himanshu"  data-toggle="dropdown" (click)="logout()" >Logout</button></a></li>
       </ul>
         
   
@@ -39,7 +40,7 @@
     
     </div></nav>
     
-         <div class="jumbotron text-center">
+         <!-- <div class="jumbotron text-center">
     <h2>Home</h2>      
       </div>
         <div class="container-fluid well">
@@ -125,9 +126,67 @@
                   
               </div>
             </div>
+        </div> -->
+        <div class="jumbotron text-center">
+            <br><br>
+     <h2>User Menu</h2>      
+       </div>
+      
+      <div class="container-fluid">
+          <div class="row">
+                  <div class="col-md-2 ">
+                   
+                  </div>
+      
+                  <div class="col-md-8 text-center">
+                    <button type="button" routerLink="/tsearch" class=" btn btn-outline-dark">Search Trainings</button>
+                    <button type="button" routerLink="/umenu" class=" btn btn-outline-dark">Current Trainings</button>
+                    <button type="button" routerLink="/ctraining" class="btn btn-outline-dark">Completed Trainings</button>
+                    <button type="button" routerLink="/ViewRequest" class="btn btn-outline-dark">Approvals</button>
+                  </div>
+                  
+                  <div class="col-md-2">
+      
+                  </div>
+          </div>
+      
+          <div class="row">
+              
+              <div class="col-md-12 text-center">
+              <div class="table-responsive" style="margin-top:30px;"> 
+                      <h3>Current Trainings</h3><br>
+                        <table class="table">
+              <thead class="thead-dark">
+                  <tr>
+                    
+                      <th>Technology</th>
+                      <th>Trainer Name</th>
+                      <th>Duration</th>
+                      <th>Timing</th>
+                      <th>Progress</th>
+                     
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let i of myTrainings">
+                      <td>{{i.skillname}}</td>
+                      <td>{{i.mentorName}}</td>
+                      <td>{{i.startDate | date: 'dd/MM/yyyy'}} to {{i.endDate | date: 'dd/MM/yyyy'}}</td>
+                      <td>{{i.timeSlot}}</td>
+                      <td *ngIf="i.progress!=undefined">
+                              <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" style="width: 100%">
+                                  {{i.progress}} %
+                              </div>
+                      </td>
+                      <td *ngIf="i.progress==undefined">
+                                <div class="progress-bar bg-info progress-bar-striped progress-bar-animated" style="width: 100%">
+                                    Pending
+                                </div>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+                  </div>
+                  </div>
+                </div>
         </div>
-    
-
-  
-
-

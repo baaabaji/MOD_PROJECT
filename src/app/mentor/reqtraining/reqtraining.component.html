@@ -53,41 +53,75 @@
                       <button type="button" routerLink="/mctraining" class=" btn btn-outline-dark button" >Completed Trainings</button>
                       <!-- <button type="button" routerLink="/EditSkills" class=" btn btn-outline-dark button">Edit Skills</button> -->
                       <button type="button" routerLink="/reqtraining" class=" btn btn-outline-dark button">Training Requested</button>
-                      <button type="button" routerLink="/mpayment" class=" btn btn-outline-dark button">Payment Details</button>
+                      <button type="button" routerLink="/PaymentDetails" class=" btn btn-outline-dark button">Payment Details</button>
               </div>
               <div class="col-md-2">
 
               </div>
-      </div>
+      </div><br>
       <div class="row">
-          <div class="col-md-1"></div>
-          <div class="col-md-10 text-center">
-          <div class="table-responsive" style="margin-top:30px;"> 
-                  <h4>Payment Management</h4><br><br>
-                    <table class="table">
-          <thead class="thead-dark">
-              <tr>
                 
-                  <th>Technologhy</th>
-                  <th>Email</th>
-                  <th>Status</th>
-                  <th>Payment Details</th>
-                 
-              </tr>
-          </thead>
-          <tbody>
-              <tr *ngFor="let i of myPayRecord">
-                  <td>{{i.skillName}}</td>
-                  <td></td>
-                  <td><strong style="color: green"> Paid : {{i.fees}}</strong></td>
-                  <td>
-                  <button type="button" class="btn btn-primary">See Details</button>
-                  </td>
-              </tr>
-          </tbody>
-      </table>
-  </div>
+            <div class="col-md-4">
+            <div class="table-responsive" style="margin-top:30px;"> 
+                   
+                      <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Requested</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let i of Requested">
+                    <p><strong>{{i.userName}} Requested {{i.skillname}} from {{i.startDate | date: 'dd/MM/yyyy'}} to {{i.endDate | date: 'dd/MM/yyyy'}}</strong></p>
+                    <p>
+        <button type="button" class="btn btn-sm btn-success" (click)="RequestApproved(i.id)">Approve</button>
+
+        <button type="button" class="btn btn-sm btn-danger"(click)="RequestDeclined(i.id)">Decline</button>
+                    </p>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
-<div class="col-md-1"></div>
+
+<div class="col-md-4 text-center">
+        <div class="table-responsive" style="margin-top:30px;"> 
+                  <table class="table">
+        <thead class="thead-dark">
+            <tr>
+              <th>Approved</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr *ngFor="let i of Approved">
+                        <p><strong>- {{i.userName}} Approved for {{i.skillname}} from {{i.startDate | date: 'dd/MM/yyyy'}} to {{i.endDate | date: 'dd/MM/yyyy'}}</strong></p>
+                      
+                    </tr>
+        </tbody>
+    </table>
+</div>
+</div>
+
+
+<div class="col-md-4 text-center">
+    <div class="table-responsive" style="margin-top:30px;"> 
+            <table class="table">
+  <thead class="thead-dark">
+      <tr>
+        <th>Rejected</th>
+      </tr>
+  </thead>
+  <tbody>
+          <tr *ngFor="let i of Declined">
+                  <p><strong>- Rejected {{i.userName}} for {{i.skillname}} from {{i.startDate | date: 'dd/MM/yyyy'}} to {{i.endDate | date: 'dd/MM/yyyy'}}</strong></p>
+              </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
 </div> 
+
+
 </div> 
+

@@ -43,10 +43,13 @@ import { UmenuService } from './mentor/umenu/umenu.service';
 import { MprofileService } from './mentor/mprofile/mprofile.service';
 import { AfeeService } from './mentor/afee/afee.service';
 import { LoginComponent } from './mentor/login/login.component';
+import { CmentorComponent } from './mentor/cmentor/cmentor.component';
+import { MctrainingComponent } from './mentor/mctraining/mctraining.component';
+import { ReqtrainingComponent } from './mentor/reqtraining/reqtraining.component';
 
 @NgModule({
   declarations: [
-    AppComponent,AmenuComponent,LoginComponent, TrainingComponent,AmanComponent,AtechComponent,AfeeComponent,UpaymentComponent,UprogressComponent,UsignupComponent,UmenuComponent,MpaymentComponent,CtrainingComponent,MentorComponent,TsearchComponent,MeditComponent,MprogressComponent,MsignupComponent,MprofileComponent,HomeComponent,MmenuComponent
+    AppComponent,AmenuComponent,LoginComponent, ReqtrainingComponent, TrainingComponent, MctrainingComponent ,AmanComponent,AtechComponent,AfeeComponent,UpaymentComponent,UprogressComponent,UsignupComponent,UmenuComponent,MpaymentComponent,CtrainingComponent,MentorComponent,TsearchComponent,MeditComponent,MprogressComponent,MsignupComponent,MprofileComponent, CmentorComponent, HomeComponent,MmenuComponent
 
   ],
   imports: [

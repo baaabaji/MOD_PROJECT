@@ -8,59 +8,40 @@
 </head>
     
     <body>
-         <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container-fluid">
-      <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>                        
-        </button>
-           <a routerLink="/umenu" class="navbar-brand">User Dashboard</a>
-      </div>
-      
-        <div class="collapse navbar-collapse" id="myNavbar">
-          
-
-      
-       <ul class="nav navbar-nav navbar-right">
-        <li><a onclick='alert("no notifications")'><span class="glyphicon glyphicon-bell"></span> Notification</a></li>
-        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Hi {{user}}</a>
-        <ul class="dropdown-menu">
-        <li><span class="glyphicon glyphicon-off"></span> Logout</li>
-      </ul>
-    </li>
-      </ul>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>                        
+                </button>
+              </div>
+              
+                <div class="collapse navbar-collapse" id="myNavbar">
+                  
         
-  
-      
-      <form class="navbar-form navbar-right" action="/action_page.php">
-        
-  
-      </form>
-    </div>
-    
-    </div></nav>
-
-        
-         <div class="jumbotron text-center">
-    <h2>Completed Trainings</h2>      
-      </div>
-        <div class="container-fluid well">
-    <div class="row">
-        <div class="dropdown col-sm-6 ">
-   
-  </div>
-            <div class="col-sm-6">
+              
+               <ul class="nav navbar-nav navbar-right">
+                <li><a onclick='alert("no notifications")'><span class="glyphicon glyphicon-bell"></span> Notification</a></li>
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Hi {{usign.firstName}}</a></li>
+                <li class="dropdown"><a onclick='logout()' class="dropdown-toggle" data-toggle="dropdown" ><button type="button" class="dropdown-toggle"  data-toggle="dropdown" (click)="logout()" >Logout</button></a></li>
             
-           <div class="col-sm-6">
-            <button type="button" class="btn btn-primary btn-block" onclick='alert("no notifications")'>Notification</button></div>
-            <div class="col-sm-6 text-right">
-            <button type="button" class="btn btn-danger" (click)="logout()">Logout</button></div>
-        </div>
-        <br><br>
-        </div>
-            <div class="row">
+              </ul>
+                
+          
+              
+            </div>
+            
+            </div></nav>
+        
+            
+                
+                 <div class="jumbotron text-center">
+                   <br><br>
+            <h2>Training Menu</h2>      
+              </div>
+            <!-- <div class="row">
             <div class="col-sm-4 text-center">
                 <a routerLink="/tsearch"><button type="button" class="btn btn-primary btn-block">Search Trainings</button></a>
                 </div>
@@ -89,7 +70,7 @@
           
   <tbody>
   <tr *ngFor="let train of training">
-      <!-- {{tech}} -->
+      
     <td class="hidden">{{train.id}}</td>
     
       <td>{{train.startDate}}</td>
@@ -119,5 +100,62 @@
 </table>
                 
         </div>
-    </body>
+    </body> -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2 ">
+             
+            </div>
+            <div class="col-md-8 text-center">
+                    <button type="button" routerLink="/tsearch" class=" btn btn-outline-dark button">Search Trainings</button>
+                    <button type="button" routerLink="/umenu" class=" btn btn-outline-dark button">Current Trainings</button>
+                    <button type="button" routerLink="/ctraining" class="btn btn-outline-dark button">Completed Trainings</button>
+                    <button type="button" routerLink="/ViewRequest" class="btn btn-outline-dark button">Approvals</button>
+            </div>
+            <div class="col-md-2">
+
+            </div>
+    </div>
+     
+    
+      <div class="row">
+        <div class="col-md-12 text-center">
+        <div class="table-responsive" style="margin-top:30px;"> 
+          <h4>Completed Trainings</h4>
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                  
+                <th>Technologhy</th>
+                <th>Trainer Name</th>
+                <th>Duration</th>
+                <!-- <th>Timing</th> -->
+                <th>Status</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let i of myTrainings">
+                <td>{{i.skillname}}</td>
+                <td>{{i.mentorName}}</td>
+                <td>{{i.startDate | date: 'dd/MM/yyyy'}} to {{i.endDate | date: 'dd/MM/yyyy'}}</td>
+                <!-- <td>{{i.timeSlot}}</td> -->
+                <td *ngIf="i.progress!=undefined">
+                  <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" style="width: 100%">
+                      {{i.progress}} %
+                  </div>
+                </td>
+                <td *ngIf="i.progress==undefined">
+                    <div class="progress-bar bg-info progress-bar-striped progress-bar-animated" style="width: 100%">
+                        Pending
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+            </div>
+           
+            </div>
+    </div>  
+    </div>
 

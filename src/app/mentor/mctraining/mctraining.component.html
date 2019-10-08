@@ -59,35 +59,42 @@
 
               </div>
       </div>
+
       <div class="row">
-          <div class="col-md-1"></div>
-          <div class="col-md-10 text-center">
-          <div class="table-responsive" style="margin-top:30px;"> 
-                  <h4>Payment Management</h4><br><br>
-                    <table class="table">
-          <thead class="thead-dark">
-              <tr>
-                
-                  <th>Technologhy</th>
-                  <th>Email</th>
-                  <th>Status</th>
-                  <th>Payment Details</th>
-                 
-              </tr>
-          </thead>
-          <tbody>
-              <tr *ngFor="let i of myPayRecord">
-                  <td>{{i.skillName}}</td>
-                  <td></td>
-                  <td><strong style="color: green"> Paid : {{i.fees}}</strong></td>
-                  <td>
-                  <button type="button" class="btn btn-primary">See Details</button>
-                  </td>
-              </tr>
-          </tbody>
-      </table>
-  </div>
+            <div class="col-md-12 text-center">
+            <div class="table-responsive" style="margin-top:30px;"> 
+                    <h4>Completed Trainings</h4><br><br>
+                      <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                  
+                    <th>Technologhy</th>
+                    <th>Username</th>
+                    <th>End Date</th>
+                    <th>Progress</th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+                    <tr *ngFor="let i of myTrainings">
+                            <td>{{i.skillname}}</td>
+                            <td>{{i.userName}}</td>
+                            <td>{{i.endDate | date: 'dd/MM/yyyy'}}</td>
+                            <!-- <td>{{i.timeSlot}}</td> -->
+                            <td *ngIf="i.progress!=undefined">
+                              <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" style="width: 100%">
+                                  {{i.progress}} %
+                              </div>
+                            </td>
+                            <td *ngIf="i.progress==undefined">
+                                <div class="progress-bar bg-info progress-bar-striped progress-bar-animated" style="width: 100%">
+                                    Pending
+                                </div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
 </div>
-<div class="col-md-1"></div>
-</div> 
-</div> 
+</div>

@@ -8,16 +8,18 @@ import { CtrainingService } from './ctraining.service';
 @Component({
 	selector: 'ctraining',
 	templateUrl: './ctraining.component.html',
-	styles: [`
-    .star {
-      font-size: 2.5rem;
-      color: #b0c4de;
-    }
-    .filled {
-      color: #ffc61a;
-	}
-`],
-	providers: [NgbRatingConfig]
+	styleUrls: ['./ctraining.component.css'
+]
+//  [`
+//     .star {
+//       font-size: 2.5rem;
+//       color: #b0c4de;
+//     }
+//     .filled {
+//       color: #ffc61a;
+// 	}
+// `],
+// 	providers: [NgbRatingConfig]
 
 })
 export class CtrainingComponent implements OnInit {

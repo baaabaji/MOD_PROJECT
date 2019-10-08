@@ -6,6 +6,7 @@ import {User} from './umenu.model'
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MyService } from '../../Services/my-service.service';
 import { JsonpInterceptor } from '@angular/common/http';
+import * as _ from "underscore";
 
 
 @Component({
@@ -16,29 +17,43 @@ import { JsonpInterceptor } from '@angular/common/http';
 })
 export class UmenuComponent implements OnInit {
 
-	users: User=new User();
-	user=sessionStorage.getItem('Email')
+	myTrainings;
+	tName;
+	CurrentUser;
 
 	constructor(private fb: FormBuilder, private mylog: MyService, private router: Router)
 	{
 		User;
-		Data:Object;
+		// Data:Object;
+
 	}
 
 ngOnInit(){
 		this.mylog.GetAll()
 		.subscribe(data=>{
 			// this.users=data;
+			let i= localStorage.getItem("Email");
+    this.CurrentUser= +i;
+    this.getTrainings();
 		});
 
 	}
 
-	logout()
-	{
-		sessionStorage.removeItem('id')
-		sessionStorage.removeItem('role')
-		sessionStorage.removeItem('username')
-		this.router.navigate(['home']);
-	}
-	
+	getTrainings()
+  {
+    this.mylog.trainingApprovals().subscribe(data=>{
+      this.myTrainings=_.where(data,{accept:true,userId:this.CurrentUser,PaymentStatus:true});
+      console.log(this.myTrainings);
+     // this.getTrainerById();
+    });
+  }
+
+  getTrainerById()
+  {
+    this.mylog.GetAll().subscribe(data=>
+    {
+      this.tName=data;
+      console.log(this.tName);
+    })
+  }
 }

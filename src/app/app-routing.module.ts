@@ -21,6 +21,9 @@ import { AtechComponent } from './mentor/atech/atech.component';
 import { AmanComponent } from './mentor/aman/aman.component';
 import { TrainingComponent } from './mentor/trainings/training.component';
 import { LoginComponent } from './mentor/login/login.component';
+import { CmentorComponent } from './mentor/cmentor/cmentor.component';
+import { MctrainingComponent } from './mentor/mctraining/mctraining.component';
+import { ReqtrainingComponent } from './mentor/reqtraining/reqtraining.component';
 
 
 const routes: Routes = [
@@ -43,7 +46,11 @@ const routes: Routes = [
    { path:'uprogress', component: UprogressComponent},
    { path:'tsearch', component: TsearchComponent},
    { path:'mmenu', component: MmenuComponent},
-   { path:'amenu', component: AmenuComponent}
+   { path:'amenu', component: AmenuComponent},
+   { path:'mctraining', component: MctrainingComponent},
+   { path:'reqtraining', component: ReqtrainingComponent},
+   { path:'cmentor', component:CmentorComponent}
+
   
 ];
 

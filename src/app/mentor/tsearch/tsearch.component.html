@@ -35,11 +35,9 @@
       
        <ul class="nav navbar-nav navbar-right">
         <li><a onclick='alert("no notifications")'><span class="glyphicon glyphicon-bell"></span> Notification</a></li>
-        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Hi {{user}}</a>
-        <ul class="dropdown-menu">
-        <li><span class="glyphicon glyphicon-off"></span> Logout</li>
-      </ul>
-    </li>
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Hi {{usign.firstName}}</a></li>
+        <li class="dropdown"><a onclick='logout()' class="dropdown-toggle" data-toggle="dropdown" ><button type="button" class="dropdown-toggle"  data-toggle="dropdown" (click)="logout()" >Logout</button></a></li>
+    
       </ul>
         
   
@@ -51,46 +49,113 @@
     
         
          <div class="jumbotron text-center">
+           <br><br>
     <h2>Training Menu</h2>      
       </div>
-        <div class="container-fluid well">
-    <div class="row">
-        <div class="dropdown col-sm-6 ">
-            
-      </div>
-            <div class="col-sm-6">
-            
-           <div class="col-sm-6">
-            </div>
-            <div class="col-sm-6 text-right">
-            <button type="button" class="btn btn-danger" (click)="logout()" >Logout</button></div>
-        </div>
-        <br><br>
-        </div>
-            
-            <br>
-             <div class="container-fluid well" style="border: solid">
+        
+      <div class="container-fluid">
           <div class="row">
-                 
-                     <div class="col-sm-4" *ngFor="let tech of trainings" >
-                 <div class="card" >
-  <img src="assets/img/course.jpg" alt="Avatar" style="width:100%">
-  <div class="container" >
-    <h4><b>{{tech.techName}}</b></h4> 
-    <p>{{tech.description}}</p>
-       <div *ngIf="showId">
-           <button type="button" class="btn btn-success" (click)="enroll(tech.id)" >Enroll</button></div>
-  </div>
-</div>
-              </div>
-                 
-                 </div>
-                
-                 
-
+                  <div class="col-md-2 ">
+                   
+                  </div>
+                  <div class="col-md-8 text-center">
+                          <button type="button" routerLink="/tsearch" class=" btn btn-outline-dark button">Search Trainings</button>
+                          <button type="button" routerLink="/umenu" class=" btn btn-outline-dark button">Current Trainings</button>
+                          <button type="button" routerLink="/ctraining" class="btn btn-outline-dark button">Completed Trainings</button>
+                          <button type="button" routerLink="/ViewRequest" class="btn btn-outline-dark button">Approvals</button>
+                  </div>
+                  <div class="col-md-2">
+      
+                  </div>
+          </div>
+          <hr>
+                <div class="row">
+                    <div class="col-md-4"></div>
+      
+                    <div class="col-md-4 text-center" >
+                         <table style="margin-top: 30px; padding: 2px;">
+                             <tr>
+                                 <td>
+                                     <select name="Technology" [(ngModel)]="Technology" class="form-control rounded text-center dropdown">
+                                         <option disabled>Select Technologhy</option>
+                                         <option *ngFor="let i of SKillData" value="{{i.name}}">{{i.name}}</option>
+                                      </select>
+                                 </td>
+                                 <td>
+                                     <!-- <select name="Timings" [(ngModel)]="Timings" class="form-control rounded text-center dropdown">
+                                         <option disabled>Timings</option>
+                                         <option *ngFor="let i of SKillData" value="{{i.timings}}">{{i.timings}}</option>
+                                     </select> -->
+                                 </td>
+                                 <td>
+                                      <button type="button" class="btn btn-sm btn-primary" (click)="Find()">Find</button>
+                                 </td>
+                             </tr>
+                         </table>
+                    </div>
+                    <div class="col-md-4"></div>
+                </div>
+          
+                  <div class="row">
+                  <div class="col-md-12 text-center">
+                  <div *ngIf="show" class="table-responsive" style="margin-top:30px;"> 
+                      <h4>Search Result for Trainings {{SKillData.name}}</h4>
+                          <table class="table">
+                              <thead class="thead-dark">
+                                  <tr>
+                                    
+                                      
+                                      <th>Mentor</th>
+                                      <th>Experience (Years)</th>
+                                      <th>Action</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr *ngFor="let item of msg">
+                                      <!-- <td>{{Technology}}</td> -->
               
-        </div>
-        </div>
+                                      <td>
+                                      <img class="img-thumbnail m-3" alt="NA" src="assets/imgs/login.png" width="100" style="height: 100px;"><br>
+                                          {{item.firstName}} {{item.lastName}}
+                                      </td>
+      
+                                      <td>{{item.yearOfExperience}}</td>
+                                      <td>
+                                          <button type="button" class="btn btn-sm btn-success" (click)="SendToMentor(item.id)">Select Mentor</button>
+                                      </td>
+                                      <hr>
+                                  </tr>
+      
+                              </tbody>
+                          </table>
+                      </div>
+      
+      
+                      <div *ngIf="show_nodata" class="table-responsive" style="margin-top:30px;"> 
+                          <h4>Search Result for Trainings {{SKillData.name}}</h4>
+                              <table class="table">
+                                  <thead class="thead-dark">
+                                      <tr>
+                                        
+                                          <!-- <th>Technologhy</th> -->
+                                          <!-- <th>Timing</th>
+                                          <th>Mentor</th>
+                                          <th>Action</th> -->
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                     <tr style="text-align: center">
+                                        <h2 style="text-align: center">No Data Found</h2>
+                                     </tr>
+          
+                                  </tbody>
+                              </table>
+                          </div>
+                      </div>
+                  </div>  
+      
+      </div>
+            
    
 
 
