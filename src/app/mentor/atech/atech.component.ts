@@ -1,48 +1,36 @@
 import { Component, OnInit } from '@angular/core';
 
 import {Tech} from './atech.model';
-import {AtechService} from './atech.service';
 import {Router} from '@angular/router';
 
-
-
+import { MyService } from 'src/app/Services/my-service.service';
+import * as _ from "underscore";
 @Component({
 	selector: 'atech',
 	templateUrl: './atech.component.html',
-	styles:[]
+	styleUrls: ['./atech.component.css']
 
 })
 export class AtechComponent implements OnInit{
+	CurrentTrainings;
+  constructor(private myService:MyService, private router:Router) { }
 
-	trainings: Tech[];
-	newT: Tech = new Tech();
+  ngOnInit() {
+    this.getAllTrainings();
+  }
 
-	constructor(private router: Router, private atechService: AtechService){
 
-	}
-	ngOnInit(){
-		this.atechService.getTrainings()
-		.subscribe(data =>{
-			this.trainings=data;
-		});
-	};
+  getAllTrainings()
+  {
+    this.myService.trainingApprovals().subscribe(data=>
+      {
+        this.CurrentTrainings=data;
+        console.log(this.CurrentTrainings);
+      });
+  }
+
+
 	
-
-	deleteTech(tech: Tech): void {
-		this.atechService.deleteTech(tech)
-		  .subscribe( data => {
-			this.trainings = this.trainings.filter(u => u !== tech);
-		  })
-	  };
-
-	  createTech(): void {
-		this.atechService.createTech(this.newT)
-			.subscribe( data => {
-			  alert("Tech created successfully.");
-			});
-	
-	  };
-
 
 	  logout()
 	{

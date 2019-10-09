@@ -14,7 +14,7 @@ export class MctrainingComponent implements OnInit {
   myTrainings;
   Data;
   CurrentUser;
-  constructor(private myService:MyService) { }
+  constructor(private myService:MyService,private router:Router) { }
 
   ngOnInit() {
     let i= localStorage.getItem("Id");
@@ -39,4 +39,11 @@ export class MctrainingComponent implements OnInit {
      }
     });
   }
+  logout()
+	{
+		sessionStorage.removeItem('role')
+		sessionStorage.removeItem('id')
+		sessionStorage.removeItem('username')
+		this.router.navigate(['home']);
+	}
 }

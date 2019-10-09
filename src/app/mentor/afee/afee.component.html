@@ -1,152 +1,125 @@
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
+
+
+    
+
 <nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>                        
-      </button>
-      <a routerLink="/amenu" class="navbar-brand">Admin Home</a>
+    <div class="container-fluid">
+      <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>                        
+        </button>
+        <a routerLink="/amenu" class="navbar-brand">Admin Home</a>
+      </div>
+      
+        <div class="collapse navbar-collapse" id="myNavbar">
+          
+
+      
+       <ul class="nav navbar-nav navbar-right">
+        <li><a onclick='alert("no notifications")'><span class="glyphicon glyphicon-bell"></span> Notification</a></li>
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Hi {{user}}</a>
+        
+    </li>
+    <li class="dropdown"><a onclick='logout()' class="dropdown-toggle" data-toggle="dropdown" ><button type="button" class="dropdown-toggle" id="himanshu"  data-toggle="dropdown" (click)="logout()" >Logout</button></a></li>
+      </ul>
+        
+  
+      
+      <form class="navbar-form navbar-right" action="/action_page.php">
+        
+  
+      </form>
     </div>
     
-      <div class="collapse navbar-collapse" id="myNavbar">
-        
-      
-    
-     <ul class="nav navbar-nav navbar-right">
-      <li><a onclick='alert("no notifications")'><span class="glyphicon glyphicon-bell"></span> Notification</a></li>
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Hi Devansh </a>
-      
-  </li>
-    </ul>
-      
+    </div></nav>
+    <div class="jumbotron text-center">
+        <br><br>
+ <h2>Admin Menu</h2>      
+   </div>
+   <div class="container-fluid">
+      <div class="row">
+              <div class="col-md-2 ">
+                 
+              </div>
+              <div class="col-md-8 text-center">
+                  <button type="button" routerLink="/amenu" class="btn btn-outline-dark button" id="p">Add/Remove Technology</button>
+                  <button type="button" routerLink="/atech" class="btn btn-outline-dark button" id="p">Trainings</button>
+                  <button type="button" routerLink="/aman" class=" btn btn-outline-dark button" id="p">Block User/Mentors</button>
+                  <button type="button" routerLink="/afee" class=" btn btn-outline-dark button" id="p">Manage Payments</button>
+              </div>
+              <div class="col-md-2">
 
-    
-    <form class="navbar-form navbar-right" action="/action_page.php">
-      
-      
-
-    </form>
+              </div>
+      </div>
+      <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-md-12 text-center">
+          <div class="table-responsive" style="margin-top:30px;"> 
+                  <h3>Payment Management</h3><br>
+                    <table class="table">
+          <thead class="thead-dark">
+              <tr>
+                
+                  <th>Technologhy</th>
+                  <th>Commision</th>
+                  <th>Status</th>
+                  <th>Payment Details</th>
+                 
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let i of payRecords">
+                  <td>{{i.skillName}}</td>
+                  <td>{{i.commision}}</td>
+                  <td><strong style="color: green"> Paid : {{i.fees}}</strong></td>
+                  <td>
+                   <button type="button" class="btn btn-sm btn-success" 
+                    data-toggle="modal" data-target="#myModal"
+                    (click)="update(i.id)">Update</button> 
+                  </td>
+              </tr>
+          </tbody>
+      </table>
   </div>
   
-  </div></nav>
-    
-    <body>
-        
-         <div class="jumbotron text-center">
-    <h2>Admin</h2>      
-      </div>
-        <div class="container-fluid well">
-    <div class="row">
-        <div class="dropdown col-sm-6 ">
-             <a routerLink="/tsearch" > <button type="button" class="btn btn-primary btn-block">Trainings </button></a>
-      </div>
-            <div class="col-sm-6">
-             <div class="col-sm-4">
-                 <a routerLinl="/afee" >   <button type="button" class="btn btn-primary btn-block">Manage Fees</button></a></div>
-           <div class="col-sm-4">
-               <a routerLink="/atech" >  <button type="button" class="btn btn-primary btn-block">Add/Edit Technology</button></a></div>
-            <div class="col-sm-4 text-right">
-            <button type="button" class="btn btn-danger" (click)="logout()" >Logout</button></div>
-        </div>
-        <br><br>
-        </div>
-            <div class="row">
-            <div class="col-sm-6 text-center">
-                <a routerLink="/aman" >  <button type="button" class="btn btn-primary btn-block">Manage Users</button></a>
-                </div>
-                <div class="col-sm-6 text-center">
-                    <a routerLink="/aman" >  <button type="button" class="btn btn-primary btn-block">Manage Mentors</button></a>
-                </div>
-            
-            </div>
-    </div>
-              <div class="container-fluid well" style="border: solid">
-                  <table class="table table-striped">
-  <thead>
-  <tr>
-    <th>Id </th>
-    <th>Mentor</th>
-    <th>Training Name</th>
-      <th>Total Amount</th>
-      <th>User Id</th>
-    <th>Payment To Mentor</th>
-      <th>Payment progress</th>
-      
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let pay of payments">
-    <td>{{pay.id}}</td>
-    <td>{{pay.mentorName}}</td>
-    <td>{{pay.skillName}}</td>
-      <td>{{pay.amount}} </td>
-      <td>{{pay.userId}}</td>
-      <td>{{pay.totalAmountToMentor}}</td>
-    <td>{{pay.remarks}}</td>
-      <td> <button type="button" class="btn btn-primary btn-block"  (click)="getTraining(pay.trainingId,pay.amount,pay.id)" > <span class="glyphicon glyphicon-cog"></span> show progress</button> </td>
-  </tr>
-  </tbody>
-</table>              
-<div *ngIf="showId">
-            
-                 <table class="table table-striped">
-  <thead>
-  <tr>
-      <th>Id </th>
-      <th>progress</th>
-      <th> Commission</th>
-      <th>Send Amount to Mentor</th>
-      <th></th>
-      
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>{{training.trainingId}}</td>
-
-      <td>
-      <circle-progress
-  [percent]="training.progress"
-  [radius]="20"
-  [outerStrokeWidth]="4"
-  [innerStrokeWidth]="1.5"
-  [outerStrokeColor]="'#78C000'"
-  [innerStrokeColor]="'#C7E596'"
-  [animation]="true"
-  [animationDuration]="300"                                        
-></circle-progress></td>
-      <td>{{training.commissionPercent}} %</td>
-    <td> <button type="button" class="btn btn-success"  (click)="setAmount(training.progress,training.commissionPercent)" ><span class="glyphicon glyphicon-ok"></span> Send Amount</button></td>
-      <td><div *ngIf="!displayId">
-          <button type="button" class="btn btn-success"  (click)="toggle()" >Edit Commision %</button> </div>
-          <div *ngIf="displayId">
-          <input type="text" class="form-group" (ngValue)=training.commisionPercent placeholder="Enter Commission" for="commission" id="commission" [(ngModel)]="commission">
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <button type="button" class="btn btn-success"  (click)="setCommission(commission,training.trainingId)" ><span class="glyphicon glyphicon-ok"></span> Change Commision</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <button type="button" class="btn btn-danger"  (click)="toggle()" ><span class="glyphicon glyphicon-remove"></span> Cancel</button></div></td>
-
-  </tr>
-  </tbody>
-</table> 
-    
-    
-   
-    </div>
-   
-
+     <!-- Model Starts Here -->
+     <div id="myModal" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
                 
-            </div>
-        
-           
-        
-    
-    </body>
-
-
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h4 class="modal-title">Update Commision</h4>
+                      </div>
+                    <div class="modal-body" style="text-align: left">
+                      <h6>Add Commision</h6>
+                      <hr>
+                      <input name="Commision" placeholder="Enter Commision" class="rounded" [(ngModel)]="Commision">
+                      <br><br> 
+                      <input name="Fee"  class="rounded" [(ngModel)]="Fee" disabled>
+                      <br><br>
+                      <button type="button" class="btn btn-sm btn-success"(click)="Mainupdate()">Save</button>
+                 
+                    </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                
+                  </div>
+                </div>
+            <!-- Model End -->
+  </div>
+  <div class="col-md-1"></div>
+  </div> 
+  
+  </div>
+  
+  

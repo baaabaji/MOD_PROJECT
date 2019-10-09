@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import * as _ from "underscore";
 import { AfeeComponent } from './afee.component';
 
 @NgModule({

@@ -50,9 +50,7 @@ export class MyService {
     return this._UserData.get("https://localhost:44386/api/login?Email="+email+'&Password='+password,httpOptions).
     pipe(map(data1=>(data1=JSON.parse(JSON.stringify(data1)))));
   }
-
-  //Register
-  public Register(signUpData)
+Register(signUpData)
   {
     console.log(signUpData);
     return this._UserData.post("https://localhost:44386/api/register",signUpData,httpOptions).
@@ -161,7 +159,22 @@ export class MyService {
   public trainingProgress(data)
   {
     return this._UserData.post("https://localhost:44386/api/updateProgress",data,httpOptions).
-    pipe(map(data1=>(data1=JSON.parse(JSON.stringify(data1)))));;
+    pipe(map(data1=>(data1=JSON.parse(JSON.stringify(data1)))));
   }
 
+
+  //Get Admin Commision
+  public AddCommision(data)
+  {
+    return this._UserData.post("https://localhost:44386/api/admincommision",data,httpOptions).
+    pipe(map(data1=>(data1=JSON.parse(JSON.stringify(data1)))));
+  }
+
+  //update Trainer Profile
+
+  public UpdateProfile(data)
+  {
+    return this._UserData.post("https://localhost:44386/api/updatetrainerprofile",data,httpOptions).
+    pipe(map(data1=>(data1=JSON.parse(JSON.stringify(data1)))));
+  }
 }

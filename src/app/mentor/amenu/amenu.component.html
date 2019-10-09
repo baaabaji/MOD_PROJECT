@@ -1,75 +1,102 @@
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
+
+    
+
 <nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>                        
-      </button>
-      <a routerLink="/amenu" class="navbar-brand">Admin Dashboard</a>
-    </div>
-    
-      <div class="collapse navbar-collapse" id="myNavbar">
+    <div class="container-fluid">
+      <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>                        
+        </button>
+        <a routerLink="/amenu" class="navbar-brand">Admin Home</a>
+      </div>
+      
+        <div class="collapse navbar-collapse" id="myNavbar">
+          
+
+      
+       <ul class="nav navbar-nav navbar-right">
+        <li><a onclick='alert("no notifications")'><span class="glyphicon glyphicon-bell"></span> Notification</a></li>
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Hi {{user}}</a>
         
-      
-    
-     <ul class="nav navbar-nav navbar-right">
-      <li><a  onclick="alert('no notifications')"><span class="glyphicon glyphicon-bell"></span> Notification</a></li>
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Hi Devansh </a>
-      <ul class="dropdown-menu">
-      <li><span class="glyphicon glyphicon-off"></span> Logout</li>
-    </ul>
-  </li>
-    </ul>
-      
-
-    
-    <form class="navbar-form navbar-right" action="/action_page.php">
-      
-      
-
-    </form>
-  </div>
+    </li>
+    <li class="dropdown"><a onclick='logout()' class="dropdown-toggle" data-toggle="dropdown" ><button type="button" class="dropdown-toggle" id="himanshu"  data-toggle="dropdown" (click)="logout()" >Logout</button></a></li>
+      </ul>
+        
   
-  </div></nav>
-    
-    <body>
+      
+      <form class="navbar-form navbar-right" action="/action_page.php">
         
-         <div class="jumbotron text-center">
-    <h2>Admin</h2>      
-      </div>
-        <div class="container-fluid well">
-    <div class="row">
-        <div class="dropdown col-sm-6 ">
-              <a routerLink="/tsearch" > <button type="button" class="btn btn-primary btn-block">Trainings </button></a>
-      </div>
-            <div class="col-sm-6">
-             <div class="col-sm-4">
-            <a routerLink="/afee" ><button type="button" class="btn btn-primary btn-block">Manage Fees</button></a></div>
-           <div class="col-sm-4">
-            <a routerLink="/atech" ><button type="button" class="btn btn-primary btn-block">Add/Edit Technology</button></a></div>
-            <div class="col-sm-4 text-right">
-            <button type="button" class="btn btn-danger" (click)="logout()" >Logout</button></div>
-        </div>
-        <br><br>
-        </div>
-            <div class="row">
-            <div class="col-sm-6 text-center">
-               <a routerLink="/aman" > <button type="button" class="btn btn-primary btn-block">Manage Users</button></a>
-                </div>
-                <div class="col-sm-6 text-center">
-                <a routerLink="/aman" ><button type="button" class="btn btn-primary btn-block">Manage Mentors</button></a>
-                </div>
-            
-            </div>
+  
+      </form>
     </div>
     
-    </body>
+    </div></nav>
+    <div class="jumbotron text-center">
+        <br><br>
+ <h2>Admin Menu</h2>      
+   </div>
+   <div class="container-fluid">
+      <div class="row">
+              <div class="col-md-2 ">
+                 
+              </div>
+              <div class="col-md-8 text-center">
+                  <button type="button" routerLink="/amenu" class="btn btn-outline-dark button" id="p">Add/Remove Technology</button>
+                  <button type="button" routerLink="/atech" class="btn btn-outline-dark button" id="p">Trainings</button>
+                  <button type="button" routerLink="/aman" class=" btn btn-outline-dark button" id="p">Block User/Mentors</button>
+                  <button type="button" routerLink="/afee" class=" btn btn-outline-dark button" id="p">Manage Payments</button>
+               </div>
+              <div class="col-md-2">
 
+              </div>
+      </div>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <div class="table-responsive" style="margin-top:30px;">
+                <h3>Add/Remove Technology</h3><br><br>
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
 
+                            <th>Technology</th>
+                            <th>TOC</th>
+                            <th>Prerequisites</th>
+                             <th>Fees</th>
+                            <th>Action</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                       
+                        <tr>
+                            <td><input name="name" placeholder="Enter Name" class="rounded" [(ngModel)]="name"></td>
+                            <td><input name="toc" placeholder="Enter Details" class="rounded" [(ngModel)]="toc"></td>
+                            <td><input name="prerequisites" placeholder="Prerequisites" class="rounded" [(ngModel)]="prerequisites"></td>
+                            <td><input name="fees" placeholder="Fees" class="rounded" [(ngModel)]="fees"></td>
+ 
+                            <td><button type="button" class="btn btn-sm btn-success" (click)="Add()">Add</button></td>
+                        </tr>
+                        <tr *ngFor="let item of SkillList">
+                            <td>{{item.name}}</td>
+                            <td>{{item.toc}}</td>
+                            <td>{{item.prerequisites}}</td>
+                            <td> &#8377;{{item.fees}}
+                            <td>
+                                <button type="button" class="btn btn-sm btn-danger" (click)="Delete(item.id)">Delete</button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

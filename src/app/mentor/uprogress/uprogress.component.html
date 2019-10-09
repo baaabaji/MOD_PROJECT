@@ -1,130 +1,163 @@
 
-<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
- 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  
+  
+  
+  <style>
+  .card {
+box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+transition: 0.3s;
+width: 40%;
+}
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container-fluid">
-      <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>                        
-        </button>
-        <a routerLink="/umenu" class="navbar-brand">User Dashboard</a>
-      </div>
-      
-        <div class="collapse navbar-collapse" id="myNavbar">
-          
-        
-      
-       <ul class="nav navbar-nav navbar-right">
-        <li><a onclick='alert("no notifications")'><span class="glyphicon glyphicon-bell"></span> Notification</a></li>
-        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Hi {{user}} </a>
-        <ul class="dropdown-menu">
-        <li><span class="glyphicon glyphicon-off"></span> Logout</li>
-      </ul>
-    </li>
-      </ul>
-        
+.card:hover {
+box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+  </style>
   
-      
-  
+
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+      </button>
+      <a routerLink="/umenu" class="navbar-brand">User Home</a>
     </div>
     
-    </div></nav>
-
-    
-    <body>
+      <div class="collapse navbar-collapse" id="myNavbar">
         
-         <div class="jumbotron text-center">
-    <h2>Training Progress</h2>      
-      </div>
-        <div class="container-fluid well">
-    <div class="row">
-        <div class="dropdown col-sm-6 ">
-                  </div>
-            <div class="col-sm-6">
-            
-           <div class="col-sm-6">
-            <button type="button" class="btn btn-primary btn-block" onclick="alert('no notifications')">Notification</button></div>
-            <div class="col-sm-6 text-right">
-            <button type="button" class="btn btn-danger" (click)="logout()">Logout</button></div>
-        </div>
-        <br><br>
-        </div>
-            <div class="row">
-            <div class="col-sm-4 text-center">
-               <a routerLink="/tsearch">  <button class="btn btn-primary btn-block">Search Trainings</button></a>
-                </div>
-                <div class="col-sm-4 text-center">
-                <a routerLink="/uprogress"> <button class="btn btn-primary btn-block">Current Trainings</button></a>
-                </div>
-                <div class="col-sm-4 text-center">
-                <a routerLink="/ctraining"> <button class="btn btn-primary btn-block">Completed Trainings</button></a>
-                </div>
-            
-            </div>
-            <br>
-            <div class="container-fluid well" style="border: solid">
-            <div class="row" >
-               
-                
-                
-                
-                <table class="table table-striped">
-  <thead>
-  <tr>
-    <th class="hidden">Id</th>
-    <th>Start Date</th>
-    <th>Fees</th>
-    <th>MentorId</th>
-    <th>Progress</th>
-    <th>Rating</th>
-  </tr>
-  </thead>
-          
-  <tbody>
-  <tr *ngFor="let train of training">
-      <!-- {{tech}} -->
-    <td class="hidden">{{train.id}}</td>
+
     
-      <td>{{train.startDate}}</td>
-      <td>{{train.fees}}</td>
-      <td>{{train.mentorId}}</td>
-       
-      <td><circle-progress
-  [percent]="train.progress"
-  [radius]="20"
-  [outerStrokeWidth]="4"
-  [innerStrokeWidth]="1.5"
-  [outerStrokeColor]="'#78C000'"
-  [innerStrokeColor]="'#C7E596'"
-  [animation]="true"
-  [animationDuration]="300"                                        
-></circle-progress>
-          </td>
-   <td> <ngb-rating [(rate)]="train.rating">
-  <ng-template let-fill="fill" let-index="index">
-    <span class="star" [class.filled]="fill === 100">&#9733;</span>
-  </ng-template>
-</ngb-rating>
-</td>
-  </tr>
-  </tbody>
-</table>
-                
-                
-            
-                
-            </div>
-             
-           
-        </div>
-        </div>
-    </body>
+     <ul class="nav navbar-nav navbar-right">
+      <li><a onclick='alert("no notifications")'><span class="glyphicon glyphicon-bell"></span> Notification</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Hi {{usign.firstName}}</a></li>
+      <li class="dropdown"><a onclick='logout()' class="dropdown-toggle" data-toggle="dropdown" ><button type="button" class="dropdown-toggle"  data-toggle="dropdown" (click)="logout()" >Logout</button></a></li>
+  
+    </ul>
+      
 
+    
+  </div>
+  
+  </div></nav>
 
+  
+      
+       <div class="jumbotron text-center">
+         <br><br>
+  <h2>Training Menu</h2>      
+    </div>
+      
+    <div class="container-fluid">
+        <div class="row">
+                <div class="col-md-2 ">
+                 
+                </div>
+                <div class="col-md-8 text-center">
+                        <button type="button" routerLink="/tsearch" class=" btn btn-outline-dark button">Search Trainings</button>
+                        <button type="button" routerLink="/umenu" class=" btn btn-outline-dark button">Current Trainings</button>
+                        <button type="button" routerLink="/ctraining" class="btn btn-outline-dark button">Completed Trainings</button>
+                        <button type="button" routerLink="/uprogress" class="btn btn-outline-dark button">Approvals</button>
+                </div>
+                <div class="col-md-2">
+    
+                </div>
+        </div>   
+      
+          <div class="row">
+              
+              <div class="col-md-12 text-center">
+              <div class="table-responsive" style="margin-top:30px;"> 
+                      <h3>Approvals</h3><br>
+                      <table class="table">
+                          <thead class="thead-dark">
+                              <tr>
+                                
+                                  <th>Technology</th>
+                                  <th>Mentor</th>
+                                  <th>Date</th>
+                                  <th>Status</th>
+                                 
+                              </tr>
+                          </thead>
+                          <tbody>
+                  
+                                  <tr *ngFor="let i of Pending"> 
+                                  
+                                          <td>{{i.skillname}}</td>
+                                          <td>{{i.mentorName}}</td>
+                                          <td>{{i.startDate | date: 'dd/MM/yyyy'}} to {{i.endDate | date: 'dd/MM/yyyy'}}</td>
+                                          <td> 
+                                              <button type="button" class="btn btn-sm btn-info"
+                                              disabled>Pending</button>
+                                          </td>
+                                  </tr>
+                  
+                              <tr *ngFor="let i of Approved"> 
+                                  
+                                  <td>{{i.skillname}}</td>
+                                  <td>{{i.mentorName}}</td>
+                                  <td>{{i.startDate | date: 'dd/MM/yyyy'}} to {{i.endDate | date: 'dd/MM/yyyy'}}</td>
+                                  <td *ngIf="i.accept"> 
+                                      <button type="button" class="btn btn-sm btn-success"
+                                      disabled>Approved</button>
+                                      <button type="button" *ngIf="!i.PaymentStatus" class="btn btn-sm btn-success" (click)="Pay(i.id)">Payment</button>
+                                      <button type="button" *ngIf="i.PaymentStatus" class="btn btn-sm btn-success" 
+                                      data-toggle="modal" data-target="#myModal"
+                                      (click)="SeeRecipt(i.skillId)">See Recipt</button>
+                                     
+                                  </td>
+                              </tr>
+                  
+                              <!-- Model Starts Here -->
+                              <div id="myModal" class="modal fade" role="dialog">
+                                  <div class="modal-dialog">
+                                
+                                    <!-- Modal content-->
+                                    <div *ngIf="ReciptData"class="modal-content">
+                                      <div class="modal-header">
+                                        <h4 class="modal-title">Payment Recipt</h4>
+                                      </div>
+                                    <div class="modal-body" *ngFor="let i of ReciptData" style="text-align: left">
+                                      <h6>Training - {{i.skillName}}</h6>
+                                      <hr>
+                                        <p *ngIf="i.PaymentStatus">Payment Status - <span style="color:green">Confirmed</span></p>
+                                        <hr>
+                                        <p>Amount Paid -<span style="color:green">&#8377;{{i.fees}}</span> </p>
+                                      
+                                    </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                      </div>
+                                    </div>
+                                
+                                  </div>
+                                </div>
+                            <!-- Model End -->
+                  
+                              <tr *ngFor="let i of Declined"> 
+                                  
+                                      <td>{{i.skillname}}</td>
+                                      <td>{{i.mentorName}}</td>
+                                      <td>{{i.startDate | date: 'dd/MM/yyyy'}} to {{i.endDate | date: 'dd/MM/yyyy'}}</td>
+                                      <td *ngIf="i.rejected"> 
+                                          <button type="button" class="btn btn-sm btn-danger"
+                                          disabled>Rejected</button>
+                                      </td>
+                              </tr>
+                              
+                              
+                          </tbody>
+                      </table>
+                  
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                    

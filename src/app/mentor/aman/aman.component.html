@@ -1,137 +1,140 @@
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
- 
 
+
+    
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>                        
-      </button>
-      <a routerLink="/amenu" class="navbar-brand">Admin Home</a>
-    </div>
-    
-      <div class="collapse navbar-collapse" id="myNavbar">
+    <div class="container-fluid">
+      <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>                        
+        </button>
+        <a routerLink="/amenu" class="navbar-brand">Admin Home</a>
+      </div>
+      
+        <div class="collapse navbar-collapse" id="myNavbar">
+          
+
+      
+       <ul class="nav navbar-nav navbar-right">
+        <li><a onclick='alert("no notifications")'><span class="glyphicon glyphicon-bell"></span> Notification</a></li>
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Hi {{user}}</a>
         
-      
-    
-     <ul class="nav navbar-nav navbar-right">
-      <li><a onclick="alert('no notifications')"><span class="glyphicon glyphicon-bell"></span> Notification</a></li>
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Hi Himanshu</a>
-      <ul class="dropdown-menu">
-      <li><span class="glyphicon glyphicon-off"></span> Logout</li>
-    </ul>
-  </li>
-    </ul>
-      
-
-    
-    <form class="navbar-form navbar-right" action="/action_page.php">
-      
-      
-
-    </form>
-  </div>
+    </li>
+    <li class="dropdown"><a onclick='logout()' class="dropdown-toggle" data-toggle="dropdown" ><button type="button" class="dropdown-toggle" id="himanshu"  data-toggle="dropdown" (click)="logout()" >Logout</button></a></li>
+      </ul>
+        
   
-  </div></nav>
-    
-    <body>
+      
+      <form class="navbar-form navbar-right" action="/action_page.php">
         
-         <div class="jumbotron text-center">
-    <h2>Admin</h2>      
-      </div>
-        <div class="container-fluid well">
-    <div class="row">
-        <div class="dropdown col-sm-6 ">
-              <a routerLink="/tsearch" > <button type="button" class="btn btn-primary btn-block">Trainings </button></a>
-      </div>
-            <div class="col-sm-6">
-             <div class="col-sm-4">
-                 <a routerLink="/afee" >   <button type="button" class="btn btn-primary btn-block">Manage Fees</button></a></div>
-           <div class="col-sm-4">
-               <a routerLink="/atech" > <button type="button" class="btn btn-primary btn-block">Add/Edit Technology</button></a></div>
-            <div class="col-sm-4 text-right">
-            <button type="button" class="btn btn-danger" (click)="logout()">Logout</button></div>
-        </div>
-        <br><br>
-        </div>
-            <div class="row">
-            <div class="col-sm-6 text-center">
-                <a routerLink="/aman" >   <button type="button" class="btn btn-primary btn-block">Manage Users</button></a>
-                </div>
-                <div class="col-sm-6 text-center">
-                    <a routerLink="/aman" >   <button type="button" class="btn btn-primary btn-block">Manage Mentors</button></a>
-                </div>
-            
-            </div>
+  
+      </form>
     </div>
-              <div class="container-fluid well" style="border: solid">
-              <h3>Mentors</h3>
-                   <table class="table table-striped">
-  <thead>
-  <tr>
-    <th class="hidden">Id</th>
-    <th>Name</th>
-    <th>Contact</th>
-    <th>Rating</th>
-    <th>Description</th>
-    <th>Action</th>
-  </tr>
-  </thead>
-          
-  <tbody>
-  <tr *ngFor="let mentor of mentors">
-      <!-- {{tech}} -->
-    <td class="hidden">{{mentor.id}}</td>
     
-      <td>{{mentor.firstName}} {{mentor.lastName}}</td>
-      <td>{{mentor.contactNumber}}</td>
-      <td>{{mentor.rating}}</td>
-      <td>{{mentor.mentorProfile}}</td>
-    <td><button class="btn btn-danger" (click)="deleteMentor(mentor)"> Remove </button></td>
-  </tr>
-  </tbody>
-</table>
-                  <br>
-                  <h3>Users</h3>
-        <table class="table table-striped">
-  <thead>
-  <tr>
-    <th class="hidden">Id</th>
-    <th>Name</th>
-    <th>Contact</th>
-    <th>RegCode</th>
-    <th>Experience</th>
-    <th>Action</th>
-  </tr>
-  </thead>
-          
-  <tbody>
-  <tr *ngFor="let user of users">
-      <!-- {{tech}} -->
-    <td class="hidden">{{user.id}}</td>
-    
-      <td>{{user.firstName}} {{user.lastName}}</td>
-      <td>{{user.contactNumber}}</td>
-      <td>{{user.regCode}}</td>
-      <td>{{user.yearsofexperience}}</td>
-    <td><button class="btn btn-danger" (click)="deleteUser(user)"> Remove </button></td>
-  </tr>
-  </tbody>
-</table>    
-        
-                
-            </div>
-        
-           
-        
-    
-    </body>
+    </div></nav>
+    <div class="jumbotron text-center">
+        <br><br>
+ <h2>Admin Menu</h2>      
+   </div>
+   <div class="container-fluid">
+      <div class="row">
+              <div class="col-md-2 ">
+                 
+              </div>
+              <div class="col-md-8 text-center">
+                  <button type="button" routerLink="/amenu" class="btn btn-outline-dark button" id="p">Add/Remove Technology</button>
+                  <button type="button" routerLink="/atech" class="btn btn-outline-dark button" id="p">Trainings</button>
+                  <button type="button" routerLink="/aman" class=" btn btn-outline-dark button" id="p">Block User/Mentors</button>
+                  <button type="button" routerLink="/afee" class=" btn btn-outline-dark button" id="p">Manage Payments</button>
+              </div>
+              <div class="col-md-2">
 
-
+              </div>
+      </div>
+      <div class="container-fluid">
+          <div class="row row2">
+          <div class="col-md-1"></div>
+              <div class="col-md-12 text-center">
+              <div class="table-responsive" style="margin-top:30px;"> 
+                      <h3>Block/Unblock Users</h3><br>
+                        <table class="table">
+              <thead class="thead-dark">
+                  <tr>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Contact No</th>
+                      <th>Action</th>
+                     
+                  </tr>
+              </thead>
+              <tbody>
+                      <tr *ngFor="let item of user">
+                              <td>{{item.firstName}} {{this.lastName}}</td>
+                              <td>{{item.email}}</td>
+                              <td>{{item.contactNumber}}</td>
+                              <td>
+                                  <button type="button" class="btn btn-sm btn-success"
+                                   [disabled]="item.active"
+                                   (click)="Unblock(item.id)">Unblock</button>
+          
+                                  <button type="button" 
+                                  class="btn btn-sm btn-danger" 
+                                  [disabled]="!item.active" 
+                                  (click)="Block(item.id)">Block</button>
+                              </td>
+                      </tr>
+              </tbody>
+          </table>
+      </div>
+      </div>
+      <div class="col-md-1"></div>
+      </div>
+      
+      
+      <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-md-12 text-center">
+          <div class="table-responsive" style="margin-top:30px;"> 
+                  <h3>Block/Unblock Mentors</h3><br>
+                    <table class="table">
+          <thead class="thead-dark">
+              <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Contact No</th>
+                  <th>Action</th>
+                 
+              </tr>
+          </thead>
+          <tbody>
+                  <tr *ngFor="let item of mentor">
+                          <td>{{item.firstName}} {{this.lastName}}</td>
+                          <td>{{item.email}}</td>
+                          <td>{{item.contactNumber}}</td>
+                          <td>
+                              <button type="button" class="btn btn-sm btn-success"
+                               [disabled]="item.active"
+                               (click)="Unblock(item.id)">Unblock</button>
+      
+                              <button type="button" 
+                              class="btn btn-sm btn-danger" 
+                              [disabled]="!item.active" 
+                              (click)="Block(item.id)">Block</button>
+                          </td>
+                  </tr>
+          </tbody>
+      </table>
+      </div>
+      </div>
+      <div class="col-md-2"></div>
+      </div>
+      </div>
+    
+      

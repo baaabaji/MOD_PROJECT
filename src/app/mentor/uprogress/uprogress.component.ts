@@ -7,62 +7,88 @@ import { UprogressService } from './uprogress.service';
 
 
 import { PlatformLocation } from '@angular/common';
+import { MyService } from 'src/app/Services/my-service.service';
 
-
+import * as _ from "underscore";
 @Component({
 	selector: 'uprogress',
 	templateUrl: './uprogress.component.html',
-	styles: [`
-    .star {
-      font-size: 2.5rem;
-      color: #b0c4de;
-    }
-    .filled {
-      color: #ffc61a;
-	}
-`],
+	
+	styleUrls: ['./uprogress.component.css'],
 	providers: [NgbRatingConfig]
 
 })
 export class UprogressComponent implements OnInit {
 
+	myData;
+  Approved;
+  Declined;
+  Pending;
+
+  allReciptData;
+  ReciptData;
+  CurrentUser;
+
+  constructor(private myService:MyService,private route:Router) { }
+
+  ngOnInit() {
+    let i= localStorage.getItem("Id");
+    this.CurrentUser= +i;
+ this.getmyData();
+ this.getPaymentDtls();
+
+  }
+
+  getmyData()
+  {
+    this.myService.trainingApprovals().subscribe(data=>
+      {
+        this.myData=data;
+        console.log(this.myData);
+        this.Approved=_.where(this.myData,{accept:true,userId:this.CurrentUser});
+        console.log(this.Approved);
+         this.Pending=_.where(this.myData,{accept:false,rejected:false,userId:this.CurrentUser});
+        this.Declined=_.where(this.myData,{rejected:true,userId:this.CurrentUser});
+        console.log("Pending "+JSON.stringify(this.Pending));
+       
+      });
+  }
+
+  logout()
+  {
+	  sessionStorage.removeItem('role')
+	  sessionStorage.removeItem('id')
+	  sessionStorage.removeItem('username')
+	  this.route.navigate(['home']);
+  }
+  getPaymentDtls()
+  {
+    this.myService.AllPayments().subscribe(data=>
+      {
+        this.allReciptData=data;
+      })
+  }
 
 
+  Pay(id)
+  {
+    alert(id);  
+    const data={
+      ID:id,
+   };
+ 
+    this.route.navigate(['/Payment'],{queryParams:data});  
+  }
 
-	logout()
-	{
-		sessionStorage.removeItem('role')
-		sessionStorage.removeItem('id')
-		sessionStorage.removeItem('username')
-		this.router.navigate(['home']);
-	}
-
-	training: Training[];
-	user=sessionStorage.getItem("username")
-
-
-	constructor(private router: Router,private uprogressService: UprogressService,location: PlatformLocation,config: NgbRatingConfig)
-	{
-		//location.onPopState(() => {
-		//	console.log('pressed back in add!!!!!');
-		//	this.router.navigateByUrl('/uprogress');
-		//	history.forward();
-		//	});
-
-		config.max = 5;
-   		 config.readonly = true;
-	}
-
-	ngOnInit(){
-		this.uprogressService.getTrainings()
-		.subscribe(data=>{
-			this.training=data;
-		});
+  SeeRecipt(id)
+  {
+    console.dir(this.allReciptData);
+    
+   this.ReciptData=_.where(this.allReciptData,{skillId:id,userId:this.CurrentUser,PaymentStatus:true});
+    
+    console.log(this.ReciptData);
 
 
-			
+  }
 
-
-
-
-}}
+}

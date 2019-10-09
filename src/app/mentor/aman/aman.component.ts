@@ -3,55 +3,79 @@ import { Component,OnInit } from '@angular/core';
 import {User,Mentor} from './aman.model';
 import{AmanService} from './aman.service';
 import{Router} from '@angular/router';
-
+import * as _ from "underscore";
+import { MyService } from 'src/app/Services/my-service.service';
 @Component({
 	selector: 'aman',
 	templateUrl: './aman.component.html',
-	styles:[]
+	styleUrls: ['./aman.component.css']
 
 })
 export class AmanComponent implements OnInit {
 
-	users: User[];
-	mentors: Mentor[];
-	
-	constructor(private router: Router,private amanService: AmanService)
-	{
+	Userlist;
+  msg;
+  user;
+  mentor;
 
-	}
+  constructor(private _service:MyService,private route:Router) { 
+   this.GetAllUsers();
+  
+  }
 
-	ngOnInit(){
-		this.amanService.getUsers()
-		.subscribe(data =>{
-			this.users=data;
-		});
+  ngOnInit() {
+  }
 
-		this.amanService.getMentors()
-		.subscribe(data1=>{
-			this.mentors=data1;
-		});
-	};
+  GetAllUsers()
+  {
+    this._service.GetAll().subscribe(data=>
+      {
+        this.Userlist = data;
+        this.onGetUserRole();
+      });
+  }
 
-	deleteUser(user: User): void{
-		this.amanService.deleteUser(user)
-		.subscribe(data=> {
-			this.users = this.users.filter(u => u !== user);
-		})
-	};
 
-	deleteMentor(mentor: Mentor): void{
-		this.amanService.deleteMentor(mentor)
-		.subscribe(data1=>{
-			this.mentors=this.mentors.filter(m => m !== mentor);
-		})
-	};
+  onGetUserRole() {
+    this.user = _.where(this.Userlist,{role: 3});
+    this.mentor  = _.where(this.Userlist,{role:2});
+    console.log(this.mentor);
+    console.log("Users"+this.user)
+  }
+
+
+  Unblock(id:any)
+  {
+   this._service.Unblock(id).subscribe((data)=>
+   {
+     this.msg=data;
+    this.GetAllUsers();
+    this.onGetUserRole();
+    alert(this.msg);
+    });
+  //  alert("Unlocked No "+id);
+  //  this.route.navigate(['/blockuser']);
+  }
+
+  Block(id:any)
+  {
+    this._service.Block(id).subscribe((data)=>
+    {
+      this.msg=data;
+      this.GetAllUsers();
+    this.onGetUserRole();
+    alert(this.msg);
+    });
+    // alert("Blocked No "+id);
+    // this.route.navigate(['/blockuser']);
+  }
 	
 	logout()
 	{
 		sessionStorage.removeItem('role')
 		sessionStorage.removeItem('id')
 		sessionStorage.removeItem('username')
-		this.router.navigate(['home']);
+		this.route.navigate(['home']);
 	}
 
 
