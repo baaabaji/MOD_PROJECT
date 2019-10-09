@@ -58,9 +58,9 @@ Register(signUpData)
   }
   //getAllSkills
 
-  public AllSkills()
+  AllSkills()
   {
-    return this._UserData.get("https://localhost:44386/api/getskills");
+    return this._UserData.get("https://localhost:44386/api/getAllSkills");
   }
 
   //DeleteSkill

@@ -3,8 +3,8 @@ import {NgbRatingConfig} from '@ng-bootstrap/ng-bootstrap';
 
 import {Training} from './ctraining.model'
 import { Router } from '@angular/router';
-import { CtrainingService } from './ctraining.service';
-
+import { MyService } from 'src/app/Services/my-service.service';
+import * as _ from "underscore";
 @Component({
 	selector: 'ctraining',
 	templateUrl: './ctraining.component.html',
@@ -24,37 +24,34 @@ import { CtrainingService } from './ctraining.service';
 })
 export class CtrainingComponent implements OnInit {
 	
+	myTrainings;
+  CurrentUser; 
+  constructor(private myService:MyService,private router:Router) { 
+   if(localStorage.getItem("userid")==undefined)
+  {
+    alert("Please login");
+    this.router.navigate(['login']);
+  }
+  }
+
+  ngOnInit() {
+    this.getTrainings();
+  }
 
 
+  getTrainings()
+  {
+    this.myService.trainingApprovals().subscribe(data=>{
+      this.myTrainings=_.where(data,{accept:true,userId:this.CurrentUser,PaymentStatus:true});
+      console.log(this.myTrainings);
+    });
+  }
 
-	training: Training[];
-	user=sessionStorage.getItem("username")
-
-
-	constructor(private router: Router,private ctrainingService: CtrainingService,config: NgbRatingConfig)
-	{
-		config.max = 5;
-   		 config.readonly = true;
-		
-	}
-
-	ngOnInit(){
-		this.ctrainingService.getTrainings()
-		.subscribe(data=>{
-			this.training=data;
-		});
-	}
-
-	
 	logout()
 	{
-		sessionStorage.removeItem('role')
-		sessionStorage.removeItem('id')
-		sessionStorage.removeItem('username')
+		localStorage.clear();
 		this.router.navigate(['home']);
 	}
-
-
 
 
 }

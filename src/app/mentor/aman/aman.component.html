@@ -24,7 +24,7 @@
       
        <ul class="nav navbar-nav navbar-right">
         <li><a onclick='alert("no notifications")'><span class="glyphicon glyphicon-bell"></span> Notification</a></li>
-        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Hi {{user}}</a>
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Hi </a>
         
     </li>
     <li class="dropdown"><a onclick='logout()' class="dropdown-toggle" data-toggle="dropdown" ><button type="button" class="dropdown-toggle" id="himanshu"  data-toggle="dropdown" (click)="logout()" >Logout</button></a></li>
@@ -52,18 +52,19 @@
                   <button type="button" routerLink="/amenu" class="btn btn-outline-dark button" id="p">Add/Remove Technology</button>
                   <button type="button" routerLink="/atech" class="btn btn-outline-dark button" id="p">Trainings</button>
                   <button type="button" routerLink="/aman" class=" btn btn-outline-dark button" id="p">Block User/Mentors</button>
-                  <button type="button" routerLink="/afee" class=" btn btn-outline-dark button" id="p">Manage Payments</button>
+                  <button type="button" routerLink="/afee" class=" btn btn-outline-dark button" id="p">Manage Payments</button><br><br>
+                  <h3>Block/Unblock Users</h3>
               </div>
-              <div class="col-md-2">
+              <div class="col-md-2 text-center">
 
               </div>
       </div>
       <div class="container-fluid">
           <div class="row row2">
           <div class="col-md-1"></div>
-              <div class="col-md-12 text-center">
+              <div class="col-md-12 ">
               <div class="table-responsive" style="margin-top:30px;"> 
-                      <h3>Block/Unblock Users</h3><br>
+                      
                         <table class="table">
               <thead class="thead-dark">
                   <tr>

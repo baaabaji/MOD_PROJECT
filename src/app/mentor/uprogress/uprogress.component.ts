@@ -3,7 +3,6 @@ import {NgbRatingConfig} from '@ng-bootstrap/ng-bootstrap';
 
 import {Training} from './uprogress.model'
 import { Router } from '@angular/router';
-import { UprogressService } from './uprogress.service';
 
 
 import { PlatformLocation } from '@angular/common';
@@ -29,13 +28,20 @@ export class UprogressComponent implements OnInit {
   ReciptData;
   CurrentUser;
 
-  constructor(private myService:MyService,private route:Router) { }
+  constructor(private myService:MyService,private route:Router) {
+    if(localStorage.getItem("userId")==undefined)
+    {
+      alert("Please login");
+      this.route.navigate(['login']);
+    }
+
+   }
 
   ngOnInit() {
-    let i= localStorage.getItem("Id");
-    this.CurrentUser= +i;
- this.getmyData();
- this.getPaymentDtls();
+  let i= localStorage.getItem("userId");
+  this.CurrentUser= +i;
+  this.getmyData();
+  this.getPaymentDtls();
 
   }
 
@@ -54,13 +60,7 @@ export class UprogressComponent implements OnInit {
       });
   }
 
-  logout()
-  {
-	  sessionStorage.removeItem('role')
-	  sessionStorage.removeItem('id')
-	  sessionStorage.removeItem('username')
-	  this.route.navigate(['home']);
-  }
+
   getPaymentDtls()
   {
     this.myService.AllPayments().subscribe(data=>
@@ -77,7 +77,7 @@ export class UprogressComponent implements OnInit {
       ID:id,
    };
  
-    this.route.navigate(['/Payment'],{queryParams:data});  
+    this.route.navigate(['/upayment'],{queryParams:data});  
   }
 
   SeeRecipt(id)
@@ -89,6 +89,11 @@ export class UprogressComponent implements OnInit {
     console.log(this.ReciptData);
 
 
+  }
+  logout()
+  {
+	  localStorage.clear();
+	  this.route.navigate(['home']);
   }
 
 }

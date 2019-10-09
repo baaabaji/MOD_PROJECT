@@ -18,44 +18,40 @@ import * as _ from "underscore";
 export class UmenuComponent implements OnInit {
 
 	myTrainings;
-	tName;
-	CurrentUser;
-
-	constructor(private fb: FormBuilder, private mylog: MyService, private router: Router)
-	{
-		User;
-		// Data:Object;
-
+	traninerName;
+	CurrentUser; 
+	constructor(private myService:MyService,private router:Router) { 
+	  if(localStorage.getItem("userId")==undefined)
+	  {
+		alert("Please login");
+		this.router.navigate(['login']);
+	  }
 	}
-
-ngOnInit(){
-		this.mylog.GetAll()
-		.subscribe(data=>{
-			// this.users=data;
-			let i= localStorage.getItem("Email");
-    this.CurrentUser= +i;
-    this.getTrainings();
-		});
-
+  
+	ngOnInit() {
+	  let i= localStorage.getItem("userId");
+	  this.CurrentUser= +i;
+	
+	  this.getTrainings();
 	}
-
+  
 	getTrainings()
-  {
-    this.mylog.trainingApprovals().subscribe(data=>{
-      this.myTrainings=_.where(data,{accept:true,userId:this.CurrentUser,PaymentStatus:true});
-      console.log(this.myTrainings);
-     // this.getTrainerById();
-    });
-  }
-
-  getTrainerById()
-  {
-    this.mylog.GetAll().subscribe(data=>
-    {
-      this.tName=data;
-      console.log(this.tName);
-    })
-  }
+	{
+	  this.myService.trainingApprovals().subscribe(data=>{
+		this.myTrainings=_.where(data,{accept:true,userId:this.CurrentUser,PaymentStatus:true});
+		console.log(this.myTrainings);
+	   // this.getTrainerById();
+	  });
+	}
+  
+	getTrainerById()
+	{
+	  this.myService.GetAll().subscribe(data=>
+	  {
+		this.traninerName=data;
+		console.log(this.traninerName);
+	  })
+	}
   logout()
 	{
 		sessionStorage.removeItem('role')

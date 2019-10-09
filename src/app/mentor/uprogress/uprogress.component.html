@@ -36,7 +36,7 @@ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     
      <ul class="nav navbar-nav navbar-right">
       <li><a onclick='alert("no notifications")'><span class="glyphicon glyphicon-bell"></span> Notification</a></li>
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Hi {{usign.firstName}}</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Hi </a></li>
       <li class="dropdown"><a onclick='logout()' class="dropdown-toggle" data-toggle="dropdown" ><button type="button" class="dropdown-toggle"  data-toggle="dropdown" (click)="logout()" >Logout</button></a></li>
   
     </ul>
@@ -63,7 +63,8 @@ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
                         <button type="button" routerLink="/tsearch" class=" btn btn-outline-dark button">Search Trainings</button>
                         <button type="button" routerLink="/umenu" class=" btn btn-outline-dark button">Current Trainings</button>
                         <button type="button" routerLink="/ctraining" class="btn btn-outline-dark button">Completed Trainings</button>
-                        <button type="button" routerLink="/uprogress" class="btn btn-outline-dark button">Approvals</button>
+                        <button type="button" routerLink="/uprogress" class="btn btn-outline-dark button">Approvals</button><br><br>
+                        <h3>Approvals</h3>
                 </div>
                 <div class="col-md-2">
     
@@ -72,9 +73,8 @@ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
       
           <div class="row">
               
-              <div class="col-md-12 text-center">
+              <div class="col-md-12">
               <div class="table-responsive" style="margin-top:30px;"> 
-                      <h3>Approvals</h3><br>
                       <table class="table">
                           <thead class="thead-dark">
                               <tr>

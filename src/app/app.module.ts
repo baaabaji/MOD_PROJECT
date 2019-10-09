@@ -31,9 +31,7 @@ import { AtechService } from './mentor/atech/atech.service';
 import { AmanService } from './mentor/aman/aman.service';
 import { UsignupService } from './mentor/usignup/usignup.service';
 import {MsignupService} from './mentor/msignup/msignup.service';
-import { UprogressService } from './mentor/uprogress/uprogress.service';
 import { MprogressService } from './mentor/mprogress/mprogress.service';
-import { CtrainingService } from './mentor/ctraining/ctraining.service';
 import { UpaymentService } from './mentor/upayment/upayment.service';
 import { MeditService } from './mentor/medit/medit.service';
 import { TrainingComponent } from './mentor/trainings/training.component';
@@ -72,7 +70,7 @@ import { ReqtrainingComponent } from './mentor/reqtraining/reqtraining.component
       showSubtitle: false,
     })
       ],
-  providers: [AfeeService,MeditService,MprofileService,MmenuService,UmenuService,UpaymentService,TrainingService,CtrainingService,MprogressService,UprogressService,MsignupService,TsearchService,AtechService,AmanService,UsignupService],
+  providers: [AfeeService,MeditService,MprofileService,MmenuService,UmenuService,UpaymentService,TrainingService,MprogressService,MsignupService,TsearchService,AtechService,AmanService,UsignupService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

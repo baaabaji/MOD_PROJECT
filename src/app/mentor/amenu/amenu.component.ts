@@ -10,7 +10,7 @@ import { MyService } from 'src/app/Services/my-service.service';
 })
 export class AmenuComponent {
 
-	SkillList;
+  SkillList;
   msg;
   prerequisites;
   name;
@@ -31,8 +31,8 @@ export class AmenuComponent {
   GetAllSkills()
   {
     this.ServiceSkill.AllSkills().subscribe(data=>{
-      this.SkillList=data;
-      console.log(this.SkillList||JSON);
+	  this.SkillList=data;
+      console.log(this.SkillList);
     });
   }
 

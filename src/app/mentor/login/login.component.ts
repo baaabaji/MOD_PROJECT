@@ -53,6 +53,7 @@ export class LoginComponent implements OnInit {
         //user
         else if (data.role == 3) 
         {
+          localStorage.setItem("userId", data.id);
 
           this.router.navigate(['umenu']);
         }
