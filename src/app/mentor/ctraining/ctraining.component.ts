@@ -27,7 +27,7 @@ export class CtrainingComponent implements OnInit {
 	myTrainings;
   CurrentUser; 
   constructor(private myService:MyService,private router:Router) { 
-   if(localStorage.getItem("userid")==undefined)
+   if(localStorage.getItem("userId")==undefined)
   {
     alert("Please login");
     this.router.navigate(['login']);

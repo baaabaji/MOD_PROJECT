@@ -15,13 +15,20 @@ export class ReqtrainingComponent implements OnInit {
   Declined;
   msg;
   CurrentUser;
+  show:boolean=true;
   
  
-  constructor(private myService:MyService, private router: Router) { }
+  constructor(private myService:MyService,private route:Router) {
+    if(localStorage.getItem("mentorid")==undefined)
+    {
+      alert("Please login");
+      this.route.navigate(['login']);
+    }
+   }
 
   ngOnInit() {
 
-    let i= localStorage.getItem("Id");
+    let i= localStorage.getItem("mentorid");
     this.CurrentUser= +i;
     this.getmyData();
 
@@ -40,6 +47,15 @@ export class ReqtrainingComponent implements OnInit {
 
         this.Declined=_.where(this.myData,{accept:false,rejected:true,mentorId:this.CurrentUser});
 
+        if(Object.keys(this.Requested).length>0 ||
+            Object.keys(this.Approved).length>0 ||
+            Object.keys(this.Declined).length>0)
+            {
+              this.show=false;
+            }
+            else{
+              this.show=true;
+            }
         console.log("Requested"+JSON.stringify(this.Approved));
 
 
@@ -65,12 +81,11 @@ export class ReqtrainingComponent implements OnInit {
       this.getmyData();
     });
   }
+
   logout()
 	{
-		sessionStorage.removeItem('role')
-		sessionStorage.removeItem('id')
-		sessionStorage.removeItem('username')
-		this.router.navigate(['home']);
+		localStorage.clear();
+		this.route.navigate(['home']);
 	}
 
 }

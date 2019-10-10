@@ -41,7 +41,6 @@ export class UprogressComponent implements OnInit {
   let i= localStorage.getItem("userId");
   this.CurrentUser= +i;
   this.getmyData();
-  this.getPaymentDtls();
 
   }
 

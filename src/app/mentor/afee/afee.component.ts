@@ -82,9 +82,6 @@ export class AfeeComponent implements OnInit{
    }
 	logout()
 	{
-		sessionStorage.removeItem('role')
-		sessionStorage.removeItem('id')
-		sessionStorage.removeItem('username')
 		this.router.navigate(['home']);
 	}
 

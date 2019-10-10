@@ -12,12 +12,18 @@ import { MyService } from 'src/app/Services/my-service.service';
 export class MctrainingComponent implements OnInit {
 
   myTrainings;
-  Data;
+  Data:boolean=true;
   CurrentUser;
-  constructor(private myService:MyService,private router:Router) { }
+  constructor(private myService:MyService,private router:Router) {
+    if(localStorage.getItem("mentorid")==undefined)
+    {
+      alert("Please login");
+      this.router.navigate(['login']);
+    }
+   }
 
   ngOnInit() {
-    let i= localStorage.getItem("Id");
+    let i= localStorage.getItem("mentorid");
     this.CurrentUser= +i;
     this.getTrainings();
   }
@@ -41,9 +47,7 @@ export class MctrainingComponent implements OnInit {
   }
   logout()
 	{
-		sessionStorage.removeItem('role')
-		sessionStorage.removeItem('id')
-		sessionStorage.removeItem('username')
+		localStorage.clear();
 		this.router.navigate(['home']);
 	}
 }

@@ -3,18 +3,18 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FormGroup, FormControl } from '@angular/forms';
-import { ReactiveFormsModule} from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {MentorComponent} from './mentor/mentor.component';
-import {MsignupComponent} from './mentor/msignup/msignup.component';
-import {MprofileComponent} from './mentor/mprofile/mprofile.component';
-import {MmenuComponent} from './mentor/mmenu/mmenu.component';
-import {MprogressComponent} from './mentor/mprogress/mprogress.component';
-import {UprogressComponent} from './mentor/uprogress/uprogress.component';
-import {MeditComponent} from './mentor/medit/medit.component';
+import { MentorComponent } from './mentor/mentor.component';
+import { MsignupComponent } from './mentor/msignup/msignup.component';
+import { MprofileComponent } from './mentor/mprofile/mprofile.component';
+import { MmenuComponent } from './mentor/mmenu/mmenu.component';
+import { MprogressComponent } from './mentor/mprogress/mprogress.component';
+import { UprogressComponent } from './mentor/uprogress/uprogress.component';
+import { MeditComponent } from './mentor/medit/medit.component';
 import { TsearchComponent } from './mentor/tsearch/tsearch.component';
 import { AmenuComponent } from './mentor/amenu/amenu.component';
 import { CtrainingComponent } from './mentor/ctraining/ctraining.component';
@@ -26,11 +26,11 @@ import { AfeeComponent } from './mentor/afee/afee.component';
 import { AtechComponent } from './mentor/atech/atech.component';
 import { AmanComponent } from './mentor/aman/aman.component';
 import { HomeComponent } from './mentor/home/home.component';
-import{TsearchService} from './mentor/tsearch/tsearch.service';
+import { TsearchService } from './mentor/tsearch/tsearch.service';
 import { AtechService } from './mentor/atech/atech.service';
 import { AmanService } from './mentor/aman/aman.service';
 import { UsignupService } from './mentor/usignup/usignup.service';
-import {MsignupService} from './mentor/msignup/msignup.service';
+import { MsignupService } from './mentor/msignup/msignup.service';
 import { MprogressService } from './mentor/mprogress/mprogress.service';
 import { UpaymentService } from './mentor/upayment/upayment.service';
 import { MeditService } from './mentor/medit/medit.service';
@@ -44,10 +44,15 @@ import { LoginComponent } from './mentor/login/login.component';
 import { CmentorComponent } from './mentor/cmentor/cmentor.component';
 import { MctrainingComponent } from './mentor/mctraining/mctraining.component';
 import { ReqtrainingComponent } from './mentor/reqtraining/reqtraining.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
-    AppComponent,AmenuComponent,LoginComponent, ReqtrainingComponent, TrainingComponent, MctrainingComponent ,AmanComponent,AtechComponent,AfeeComponent,UpaymentComponent,UprogressComponent,UsignupComponent,UmenuComponent,MpaymentComponent,CtrainingComponent,MentorComponent,TsearchComponent,MeditComponent,MprogressComponent,MsignupComponent,MprofileComponent, CmentorComponent, HomeComponent,MmenuComponent
+    AppComponent, AmenuComponent, LoginComponent,
+     ReqtrainingComponent, TrainingComponent, MctrainingComponent, AmanComponent, AtechComponent, 
+     AfeeComponent, UpaymentComponent, UprogressComponent, UsignupComponent, UmenuComponent, MpaymentComponent,
+      CtrainingComponent, MentorComponent, TsearchComponent, MeditComponent, MprogressComponent, MsignupComponent, 
+      MprofileComponent, CmentorComponent, HomeComponent, MmenuComponent, NavbarComponent
 
   ],
   imports: [
@@ -69,8 +74,8 @@ import { ReqtrainingComponent } from './mentor/reqtraining/reqtraining.component
       titleFontSize: "10",
       showSubtitle: false,
     })
-      ],
-  providers: [AfeeService,MeditService,MprofileService,MmenuService,UmenuService,UpaymentService,TrainingService,MprogressService,MsignupService,TsearchService,AtechService,AmanService,UsignupService],
+  ],
+  providers: [AfeeService, MeditService, MprofileService, MmenuService, UmenuService, UpaymentService, TrainingService, MprogressService, MsignupService, TsearchService, AtechService, AmanService, UsignupService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

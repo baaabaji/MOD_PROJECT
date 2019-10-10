@@ -1,111 +1,85 @@
-<!DOCTYPE html>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
+<app-navbar></app-navbar>
+<div class="jumbotron text-center">
+   <br><br>
+   <h2>Payment</h2>
+</div>
+<div class="form-row">
+   <div class="form-group col">
+      <!-- [formGroup]="Payment" -->
+      <form class="form-Payment" autocomplete="off" [formGroup]="PaymentForm" (submit)="onSubmit()">
 
-
-    
-
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container-fluid">
-      <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>                        
-        </button>
-        <a routerLink="/umenu" class="navbar-brand">User Home</a>
-      </div>
-      
-        <div class="collapse navbar-collapse" id="myNavbar">
-          
-
-      
-       <ul class="nav navbar-nav navbar-right">
-        <li><a onclick='alert("no notifications")'><span class="glyphicon glyphicon-bell"></span> Notification</a></li>
-        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Hi {{user}}</a>
-        
-    </li>
-    <li class="dropdown"><a onclick='logout()' class="dropdown-toggle" data-toggle="dropdown" ><button type="button" class="dropdown-toggle" id="himanshu"  data-toggle="dropdown" (click)="logout()" >Logout</button></a></li>
-      </ul>
-        
-  
-      
-      <form class="navbar-form navbar-right" action="/action_page.php">
-        
-  
-      </form>
-    </div>
-    
-    </div></nav>
-    <div class="jumbotron text-center">
-        <br><br>
- <h2>Payment</h2>      
-   </div>
-   <div class="form-row">
-      <div class="form-group col">
-         <!-- [formGroup]="Payment" -->
-         <form class="form-Payment"  autocomplete="off"
-         [formGroup]="PaymentForm"  (submit)="onSubmit()">
-        
          <div class="form-row">
             <div class="form-group col required">
-               <input  class="form-control" formControlName="Name" placeholder="Name on Card" required>
-               <small class="text-danger" *ngIf="PaymentForm.get('Name').touched && PaymentForm.get('Name').errors?.required">This field is mandatory</small>
-               <small class="text-danger" *ngIf="PaymentForm.get('Name').touched && PaymentForm.get('Name').errors?.pattern">Invalid</small>
+               <input class="form-control" formControlName="Name" placeholder="Name on Card" required>
+               <small class="text-danger"
+                  *ngIf="PaymentForm.get('Name').touched && PaymentForm.get('Name').errors?.required">This field is
+                  mandatory</small>
+               <small class="text-danger"
+                  *ngIf="PaymentForm.get('Name').touched && PaymentForm.get('Name').errors?.pattern">Invalid</small>
 
             </div>
          </div>
 
          <div class="form-row">
             <div class="form-group col required">
-               <input class="form-control" placeholder="Valid Card Number" 
-                  formControlName="Card" required>
-               <small class="text-danger" *ngIf="PaymentForm.get('Card').touched && PaymentForm.get('Card').errors?.required">This field is mandatory</small>
-               <small class="text-danger" *ngIf="PaymentForm.get('Card').touched && PaymentForm.get('Card').errors?.pattern">Invalid</small>
+               <input class="form-control" placeholder="Valid Card Number" formControlName="Card" required>
+               <small class="text-danger"
+                  *ngIf="PaymentForm.get('Card').touched && PaymentForm.get('Card').errors?.required">This field is
+                  mandatory</small>
+               <small class="text-danger"
+                  *ngIf="PaymentForm.get('Card').touched && PaymentForm.get('Card').errors?.pattern">Invalid</small>
             </div>
-            </div>
+         </div>
 
          <div class="form-row">
             <div class="form-group col required">
-               <input class="form-control" placeholder="MM"  formControlName="mm" required>
-               <small class="text-danger" *ngIf="PaymentForm.get('mm').touched && PaymentForm.get('mm').errors?.required">This field is mandatory</small>
-               <small class="text-danger" *ngIf="PaymentForm.get('mm').touched && PaymentForm.get('mm').errors?.pattern">Invalid</small>
+               <input class="form-control" placeholder="MM" formControlName="mm" required>
+               <small class="text-danger"
+                  *ngIf="PaymentForm.get('mm').touched && PaymentForm.get('mm').errors?.required">This field is
+                  mandatory</small>
+               <small class="text-danger"
+                  *ngIf="PaymentForm.get('mm').touched && PaymentForm.get('mm').errors?.pattern">Invalid</small>
 
             </div>
 
             <div class="form-group col required">
                <input class="form-control" placeholder="YY" formControlName="yy" required>
-               <small class="text-danger" *ngIf="PaymentForm.get('yy').touched && PaymentForm.get('yy').errors?.required">This field is mandatory</small>
-               <small class="text-danger" *ngIf="PaymentForm.get('yy').touched && PaymentForm.get('yy').errors?.pattern">Invalid</small>
+               <small class="text-danger"
+                  *ngIf="PaymentForm.get('yy').touched && PaymentForm.get('yy').errors?.required">This field is
+                  mandatory</small>
+               <small class="text-danger"
+                  *ngIf="PaymentForm.get('yy').touched && PaymentForm.get('yy').errors?.pattern">Invalid</small>
 
             </div>
 
             <div class="form-group col required">
-               <input class="form-control"  formControlName="cv" placeholder="CV CODE" required>
-               <small class="text-danger" *ngIf="PaymentForm.get('cv').touched && PaymentForm.get('cv').errors?.required">This field is mandatory</small>
-              <small class="text-danger" *ngIf="PaymentForm.get('cv').touched && PaymentForm.get('cv').errors?.pattern">Invalid</small>
+               <input class="form-control" formControlName="cv" placeholder="CV CODE" required>
+               <small class="text-danger"
+                  *ngIf="PaymentForm.get('cv').touched && PaymentForm.get('cv').errors?.required">This field is
+                  mandatory</small>
+               <small class="text-danger"
+                  *ngIf="PaymentForm.get('cv').touched && PaymentForm.get('cv').errors?.pattern">Invalid</small>
             </div>
 
          </div>
          <div class="form-row">
             <div class="form-group col required">
-               <button class="btn btn-lg btn-primary btn-block"  [disabled]="!PaymentForm.valid">Pay</button>
+               <button class="btn btn-lg btn-primary btn-block" [disabled]="!PaymentForm.valid">Pay</button>
             </div>
          </div>
-         </form>  
+      </form>
+   </div>
+</div>
+<div *ngIf="skillData" class="col-sm-4">
+   <div class="card" style="width: 18rem;">
+      <div class="card-body">
+         <h5 class="card-title">Your Cart</h5>
+         <h6 class="card-subtitle mb-2 text-muted">Technology - {{skillData[0].name}}
+            <br>
+            Prerequisites - {{skillData[0].prerequisites}}
+         </h6>
+         <p class="card-text">Fees - &#8377; <strong>{{skillData[0].fees}}</strong></p>
       </div>
    </div>
-   <div *ngIf="skillData" class="col-sm-4">
-      <div  class="card" style="width: 18rem;">
-         <div class="card-body">
-            <h5 class="card-title">Your Cart</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Technology - {{skillData[0].name}}
-               <br>
-               Prerequisites - {{skillData[0].prerequisites}}
-            </h6>
-            <p class="card-text">Fees - &#8377; <strong>{{skillData[0].fees}}</strong></p>
-         </div>
-      </div>
-   </div>
+</div>

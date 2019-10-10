@@ -18,66 +18,76 @@ import { MyService } from 'src/app/Services/my-service.service';
 export class MmenuComponent implements OnInit {
 
 	myTrainings;
-  Data;
+  Data:boolean=true;
   Progress;
   msg;
   getId;
   CurrentUser;
+  constructor(private myService:MyService,private router:Router) {
+    if(localStorage.getItem("mentorid")==undefined)
+    {
+      alert("Please login");
+      this.router.navigate(['login']);
+    } 
+  }
+NewUser;
+  ngOnInit() {
+    let i= localStorage.getItem("mentorid");
+    this.NewUser= +i;
+	this.getTrainings();
+	console.log("Current User"+this.NewUser);
+  }
 
-	constructor(private router: Router, private mylog: MyService)
-	{
 
-	}
+  getTrainings()
+  {
+    this.myService.trainingApprovals().subscribe(data=>{
+      this.myTrainings=_.where(data,{accept:true,mentorId:this.NewUser,PaymentStatus:true});
+      // console.log(this.myTrainings);
+    //  console.log(Object.keys(this.myTrainings).length);
+     if(Object.keys(this.myTrainings).length>0)
+     {
+       this.Data=false;
+     }
+     else
+     {
+       this.Data=true;
+     }
+    });
+  }
+
+  Update(id)
+  { 
+    this.getId=id;
+  }
+
+  Mainupdate()
+  {
+    let data={
+      id:this.getId,
+      progress:this.Progress
+    };
+  if(this.Progress<=100)
+  {
+    this.myService.trainingProgress(data).subscribe(data=>{
+      this.msg=data;
+      alert(this.msg);
+      this.Progress='';
+      this.getTrainings();
+    });
+  }
+  else
+  {
+    alert("Cannot be greater then 100");
+    this.Progress="";
+  }
+ 
+  }
 
 	logout()
 	{
-		sessionStorage.removeItem('role')
-		sessionStorage.removeItem('id')
-		sessionStorage.removeItem('username')
+		localStorage.clear();
 		this.router.navigate(['home']);
 	}
-	ngOnInit() {
-		let i= localStorage.getItem("Id");
-		this.CurrentUser= +i;
-		this.getTrainings();
-	  }
-	
-	
-	  getTrainings()
-	  {
-		this.mylog.trainingApprovals().subscribe(data=>{
-		  this.myTrainings=_.where(data,{accept:true,mentorId:this.CurrentUser,PaymentStatus:true});
-		  console.log(this.myTrainings);
-		 console.log(Object.keys(this.myTrainings).length);
-		 if(Object.keys(this.myTrainings).length>0)
-		 {
-		   this.Data=false;
-		 }
-		 else
-		 {
-		   this.Data=true;
-		 }
-		});
-	  }
-	
-	  Update(id)
-	  { 
-		this.getId=id;
-	  }
-	
-	  Mainupdate()
-	  {
-		let data={
-		  id:this.getId,
-		  progress:this.Progress
-		};
-	
-	  this.mylog.trainingProgress(data).subscribe(data=>{
-		this.msg=data;
-		alert(this.msg);
-		this.Progress='';
-		this.getTrainings();
-	  });
-	  }
 	}
 	

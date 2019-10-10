@@ -54,9 +54,7 @@ export class UmenuComponent implements OnInit {
 	}
   logout()
 	{
-		sessionStorage.removeItem('role')
-		sessionStorage.removeItem('id')
-		sessionStorage.removeItem('username')
+		localStorage.clear();
 		this.router.navigate(['home']);
 	}
 }

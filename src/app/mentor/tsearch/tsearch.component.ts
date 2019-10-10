@@ -34,9 +34,7 @@ export class TsearchComponent implements OnInit {
 	
 	logout()
 	{
-		sessionStorage.removeItem('role')
-		sessionStorage.removeItem('id')
-		sessionStorage.removeItem('username')
+		localStorage.clear(); 
 		this.Route.navigate(['home']);
 	}
 
@@ -79,6 +77,6 @@ export class TsearchComponent implements OnInit {
 	  Technology:this.Technology
 	};
   
-	 this.Route.navigate(['/ConfirmMentor'],{queryParams:data});
+	 this.Route.navigate(['/cmentor'],{queryParams:data});
 	}
   }

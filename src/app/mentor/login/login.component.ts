@@ -43,11 +43,14 @@ export class LoginComponent implements OnInit {
         {
           //admin 
         if (data.role == 1) {
+          localStorage.setItem("adminid", data.id);
           this.router.navigate(['amenu']);
         }
         //mentor
         else if (data.role == 2 ) 
+        
         {
+          localStorage.setItem("mentorid", data.id);
           this.router.navigate(['mmenu']);
         }
         //user

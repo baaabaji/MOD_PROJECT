@@ -39,10 +39,11 @@ export class AmenuComponent {
   Delete(id)
   {
    
+    alert(id);
     this.ServiceSkill.DeleteSkill(id).subscribe(data=>{
       this.msg=data;
       alert(this.msg);
-      // console.log(this.msg);
+      console.log(this.msg);
       this.GetAllSkills();
     });
    

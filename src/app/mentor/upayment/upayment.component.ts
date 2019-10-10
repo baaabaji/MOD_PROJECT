@@ -99,8 +99,13 @@ export class UpaymentComponent implements OnInit {id;
 	 this.myService.UpdatePayment(this.id).subscribe(data=>{
 	  this.msg=data;
 	  alert(this.msg);
-	 this.AfterPay.navigate(['/ViewRequest']);  
+	 this.AfterPay.navigate(['uprogress']);  
 	 });
+	}
+	logout()
+	{
+		localStorage.clear();
+		this.AfterPay.navigate(['home']);
 	}
   
   }

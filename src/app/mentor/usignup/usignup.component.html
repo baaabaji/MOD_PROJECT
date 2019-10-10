@@ -7,7 +7,8 @@
 </head>
 
 <body>
-  <div class="container">
+   
+  <div class="container my-5">
     <div class="form-container sign-in-container">
       <form [formGroup]="UserRegister" autocomplete="off" (submit)="onSubmit()">
         <h1>Create Account</h1>
@@ -74,7 +75,7 @@
           <small class="text-danger" *ngIf="UserRegister.get('Password').touched && UserRegister.get('Password').errors?.required">This field is
             mandatory</small>
           <small class="text-danger"
-            *ngIf="UserRegister.get('Password').touched && UserRegister.get('Passwords.Password').errors?.minlength">Minimun
+            *ngIf="UserRegister.get('Password').touched && UserRegister.get('Password').errors?.minlength">Minimun
             8 characters required</small>
         </div>
         
