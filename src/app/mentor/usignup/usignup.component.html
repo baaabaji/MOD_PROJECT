@@ -1,4 +1,5 @@
-<head>
+<app-navbar></app-navbar>
+<!-- <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -98,4 +99,124 @@
   </div>
   
 </div>
-</body>
+</body> -->
+       
+<div class="container my-5">
+    <div class="form-container sign-in-container">
+        <form [formGroup]="UserRegister" autocomplete="off" (submit)="onSubmit()">
+            <h1>Create Account</h1><br>
+            <div class="form-group">
+              <input formControlName="Email" type="Email" placeholder="Email" name="Email" class="form-control" id="Email">
+              <small class="text-danger"
+                *ngIf="UserRegister.get('Email').touched && UserRegister.get('Email').errors?.required">This field is
+                mandatory</small>
+              <small class="text-danger"
+                *ngIf="UserRegister.get('Email').touched && UserRegister.get('Email').errors?.pattern">Invalid Email
+                Address</small>
+            </div>
+            <div class="form-group">
+              <input formControlName="firstName" placeholder="First Name" name="firstName" class="form-control"
+                id="firstName">
+              <small class="text-danger"
+                *ngIf="UserRegister.get('firstName').touched && UserRegister.get('firstName').errors?.required">This field
+                is mandatory</small>
+              <small class="text-danger"
+                *ngIf="UserRegister.get('firstName').touched && UserRegister.get('firstName').errors?.pattern">FirstName
+                cannot have special characters or digits</small>
+            </div>
+            <div class="form-group">
+              <input formControlName="lastName" placeholder="Last name" name="lastName" class="form-control" id="lastName">
+              <small class="text-danger"
+                *ngIf="UserRegister.get('lastName').touched && UserRegister.get('lastName').errors?.required">This field is
+                mandatory</small>
+              <small class="text-danger"
+                *ngIf="UserRegister.get('lastName').touched && UserRegister.get('lastName').errors?.pattern">LastName cannot
+                have special characters or digits</small>
+            </div>
+    
+            <div class="form-group">
+              <input formControlName="Phone" placeholder="Contact Number" name="Phone" class="form-control" id="Phone">
+              <small class="text-danger"
+                *ngIf="UserRegister.get('Phone').touched && UserRegister.get('Phone').errors?.required">This field is
+                mandatory</small>
+              <small class="text-danger"
+                *ngIf="UserRegister.get('Phone').touched && UserRegister.get('Phone').errors?.pattern">Invalid Phone
+                Number</small>
+            </div>
+    
+            <div class="form-group">
+              <input formControlName="LinkedinURL" placeholder="Linkedin URL" name="LinkedinURL" class="form-control"
+                id="LinkedinURL">
+              <small class="text-danger"
+                *ngIf="UserRegister.get('LinkedinURL').touched && UserRegister.get('LinkedinURL').errors?.required">This
+                field is mandatory</small>
+              <small class="text-danger"
+                *ngIf="UserRegister.get('LinkedinURL').touched && UserRegister.get('LinkedinURL').errors?.pattern">Invalid
+                Linkedin Url </small>
+            </div>
+            <div class="form-group">
+              <input formControlName="userName" placeholder="Username" name="userName" class="form-control" id="userName">
+              <small class="text-danger"
+                *ngIf="UserRegister.get('userName').touched && UserRegister.get('userName').errors?.required">This field is
+                mandatory</small>
+              <small class="text-danger"
+                *ngIf="UserRegister.get('userName').touched && UserRegister.get('userName').errors?.minlength">Minimun 6
+                characters required</small>
+            </div>
+            <div class="form-group">
+              <input type="password" formControlName="Password" placeholder="Password" name="Password" class="form-control" id="Password">
+              <small class="text-danger" *ngIf="UserRegister.get('Password').touched && UserRegister.get('Password').errors?.required">This field is
+                mandatory</small>
+              <small class="text-danger"
+                *ngIf="UserRegister.get('Password').touched && UserRegister.get('Password').errors?.minlength">Minimun
+                8 characters required</small>
+            </div>
+            
+            <!-- <div class="form-group">
+       
+          <label class="control-label"  for="Experience">Experience</label>
+          <div class="controls form-group">
+    <select name="Experience"  id="Experience" class="span5">
+      <option value="Less than 6 months">Less than 6 months</option>
+      <option value="1">1 Year</option>
+      <option value="2">2 Years</option>
+      <option value="3">3 Years</option>
+      <option value="4">4 Years</option>
+      <option value="More than 5 Years">more than</option>
+    
+    </select>
+          </div> -->
+        <!-- </div> -->
+            
+             <!-- <div class="form-group">
+        <input formControlName="YOE" placeholder="Experience in Years" name="YOE" class="form-control" id="YOE">
+        <small class="text-danger"
+                *ngIf="UserRegister.get('YOE').touched && UserRegister.get('YOE').errors?.required">This field is
+                mandatory</small>
+              <small class="text-danger"
+                *ngIf="UserRegister.get('YOE').touched && UserRegister.get('YOE').errors?.pattern">Invalid Format</small>
+      </div> -->
+          
+    
+      
+        <button class="btn btn-primary" [disabled]="!UserRegister.valid">Register</button>
+        <p>Sign up as Trainer <a routerLink="/msignup">Click here</a></p>
+    
+        </form>
+      </div>
+            
+      <div class="overlay-container">
+        <div class="overlay">
+         
+          <div class="overlay-panel overlay-right">
+            <h1>Welcome!</h1>
+            <p>Enter your personal details and start journey with us</p>
+            <p>Or Sign-in if you have a account</p>
+           <a routerLink="/login"> <button class="ghost" id="signIn">Sign in</button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+            
+          

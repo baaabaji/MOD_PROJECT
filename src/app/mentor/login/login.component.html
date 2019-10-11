@@ -5,12 +5,12 @@
 
   <div class="form-container sign-in-container">
     <form [formGroup]="Login" autocomplete="off" (submit)="onSubmit()">
-      <h1>Sign in</h1>
-      <div class="social-container">
+      <h1>Sign in</h1><br>
+      <!-- <div class="social-container">
         <a href="#" class="social"><i class="fa fa-facebook-f"></i></a>
         <a href="#" class="social"><i class="fa fa-google-plus"></i></a>
         <a href="#" class="social"><i class="fa fa-linkedin"></i></a>
-      </div>
+      </div> -->
       <!-- <span>or use your account</span> -->
       <div class="form-group required">
         <input formControlName="Email" placeholder="Email" placeholder="Email" class="form-control" />
@@ -28,7 +28,7 @@
           *ngIf="Login.get('Password').touched && Login.get('Password').errors?.minlength">Minimun 8 characters
           required</small>
       </div>
-      <a href="#">Forgot your password?</a>
+      <a href="usignup">Forgot your password?</a>
       <button class="btn btn-primary" [disabled]="!Login.valid">Sign in</button>
     </form>
   </div>

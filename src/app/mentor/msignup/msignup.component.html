@@ -1,23 +1,8 @@
-<!DOCTYPE html>
-<html>
-    <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-        <style>
-            .container-fluid{
-                margin-left: 50px;
-            }
-        </style>
-    </head>
-<body>
-        
-         
+       <app-navbar></app-navbar>
   <div class="container my-5">
 <div class="form-container sign-in-container">
     <form [formGroup]="MentorRegister" autocomplete="off" (submit)="onSubmit()">
-        <h1>Create Account</h1>
+        <h1>Create Account</h1><br>
         <div class="form-group">
           <input formControlName="Email" type="Email" placeholder="Email" name="Email" class="form-control" id="Email">
           <small class="text-danger"
@@ -109,17 +94,16 @@
           <small class="text-danger"
             *ngIf="MentorRegister.get('YOE').touched && MentorRegister.get('YOE').errors?.pattern">Invalid Format</small>
   </div>
-  <div class="form-group" *ngIf="SkillData">
+  <div class="form-group">
     <label>Technology</label>
     <select formControlName="Technology" class="form-control rounded text-center dropdown">
           <option *ngFor="let i of SkillData" value="{{i.name}}">{{i.name}}</option>
     </select>
     <!-- <small class="text-danger"
-    *ngIf="UserRegister.get('Technology').touched && UserRegister.get('Technology').errors?.required">This
-    field is mandatory</small> -->
+
+      field is mandatory</small> -->
 </div>
       
-
   <button class="btn btn-primary" [disabled]="!MentorRegister.valid">Register</button>
   <p>Sign up as User <a routerLink="/usignup">Click here</a></p>
 
@@ -140,8 +124,4 @@
 </div>
 
         
-        
-        
-    
-    </body>
-</html>
+      
