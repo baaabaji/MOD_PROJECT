@@ -24,8 +24,10 @@ import * as _ from "underscore";
 })
 export class CtrainingComponent implements OnInit {
 	
-	myTrainings;
+  myTrainings;
   CurrentUser; 
+  Progress;
+  show:boolean=true; 
   constructor(private myService:MyService,private router:Router) { 
    if(localStorage.getItem("userId")==undefined)
   {
@@ -35,23 +37,27 @@ export class CtrainingComponent implements OnInit {
   }
 
   ngOnInit() {
+    let i= localStorage.getItem("userId");
+    this.CurrentUser= +i;
+    // console.log(this.CurrentUser);
     this.getTrainings();
+   
   }
 
 
   getTrainings()
   {
     this.myService.trainingApprovals().subscribe(data=>{
-      this.myTrainings=_.where(data,{accept:true,userId:this.CurrentUser,PaymentStatus:true});
-      console.log(this.myTrainings);
+      this.myTrainings=_.where(data,{accept:true,userId:this.CurrentUser,PaymentStatus:true, progress:100});
+      if(Object.keys(this.myTrainings).length>0)
+      {
+        this.show=false;
+      }
+      else
+      {
+        this.show=true;
+      }
+      // console.log(this.myTrainings);
     });
   }
-
-	logout()
-	{
-		localStorage.clear();
-		this.router.navigate(['home']);
-	}
-
-
 }
